@@ -1,23 +1,11 @@
-# HowDoYouLearn
+# myyme
 
-## An Artificial Intelligence Learning Project in Angular.
+## Description of the Project
 
-The objective of this project is to create a mechanisme that learn concepts from the caos of internet (through Google) in difference languages associating to a concept all the information can obtain in internet: images, definitions, opinions, investigations and more; defining a level of information security.
+A Frontend Web done with Angular 4 and Bootstrap 3 where you can create your Robot and make it learning!
 
-# Entities
+## How the Robot will learns?
 
-## UnityKnowledge
+In this Web you will create a Robot that learns with the rest service project: 
 
-Represents the mininum Unity of a Knowledge. Assuming that a Knowledge is some word, part of a word or some words that the Human Intelligence can associate to an Image.
-
-## Idea
-
-An Idea is an amount of Unity Knowledge that make think a Human Intelligence
-
-## Critery
-
-A Critery is an amount of Idees that are interelationated of any Unity Knowledge and construct the personality of a Human Intelligence.
-
-## Personality
-
-A Personality is an amount of Criteries that this Human Mind arrive to.
+http://davidmartinezros.com:8080/how-do-you-learn-SB-2.0.0-SNAPSHOT/api/howdyl/state
