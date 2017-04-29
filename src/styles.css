@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* Imagen utilizada por defecto, la que se utlizará en pantallas pequeñas */
+body {
+    background-color: white;
+	margin: 0;
+	padding: 10px;
+}
+.div {
+    padding: 10px;
+    margin: 1px;
+    border-radius: 4px;
+    list-style-type: circle;
+    color: #21618C;
+    background-color: #fff;
+    border: 1px solid #21618C;
+}
+.div {
+    opacity: 0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
+}
+.div:hover, .div:active {
+    opacity: 1.0;
+    filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+/* Imagen utilizada en pantallas de anchura 480 px y superior */
+@media only screen and (max-width: 768px) and (orientation:landscape) {
+	 .div {
+            opacity: 1.0;
+            filter:alpha(opacity=100); /* For IE8 and earlier */
+    }
+}
+@media only screen and (max-width: 768px) and (orientation:portrait) {
+	.div {
+            opacity: 1.0;
+            filter:alpha(opacity=100); /* For IE8 and earlier */
+    }	
+}
+button {
+  padding: 5px 10px;
+  text-decoration: none;
+  color: white;
+  background-color: orangered;
+  border: 1px solid red;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer; cursor: hand;
+}
+button:hover {
+  background-color: red;
+  border: 1px solid orangered;
+}
+a:link, a:visited {
+  font-weight: bold;
+  color: orangered;
+  text-decoration: none;
+  font-size: 130%;
+}
+a:hover, a:active {
+  color: red;
+  text-decoration: underline;
+}
+.title {
+  border-radius: 4px;
+  background-color:#BBD8DC;
+  border: 1px solid #21618C;
+  color: #21618C;
+  opacity: 1.0;
+  filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+.copyright {
+    color: grey;
+    font-size: small;
+}

@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { LearnAUnity } from './learn-a-unity';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,7 @@ import { LearnAUnity } from './learn-a-unity';
     HttpModule
   ],
   providers: [
-    LearnAUnity
+    
   ],
   bootstrap: [AppComponent]
 })
