@@ -1,41 +1,46 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+h1 {
+  font-size: 1000%;
+}
 /* Imagen utilizada por defecto, la que se utlizará en pantallas pequeñas */
 body {
-    background-color: white;
+  background-color: white;
 	margin: 0;
 	padding: 10px;
 }
-.div {
-    padding: 10px;
-    margin: 1px;
-    border-radius: 4px;
-    list-style-type: circle;
-    color: #21618C;
-    background-color: #fff;
-    border: 1px solid #21618C;
+div {
+  padding: 10px;
+  margin: 1px;
 }
 .div {
-    opacity: 0.8;
+  border-radius: 4px;
+  list-style-type: circle;
+  color: #21618C;
+  background-color: #fff;
+  border: 1px solid #21618C;
+}
+.div {
+  opacity: 0.8;
 	filter:alpha(opacity=80); /* For IE8 and earlier */
 }
 .div:hover, .div:active {
-    opacity: 1.0;
-    filter:alpha(opacity=100); /* For IE8 and earlier */
+  opacity: 1.0;
+  filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 
 /* Imagen utilizada en pantallas de anchura 480 px y superior */
 @media only screen and (max-width: 768px) and (orientation:landscape) {
 	 .div {
-            opacity: 1.0;
-            filter:alpha(opacity=100); /* For IE8 and earlier */
+        opacity: 1.0;
+        filter:alpha(opacity=100); /* For IE8 and earlier */
     }
 }
 @media only screen and (max-width: 768px) and (orientation:portrait) {
-	.div {
-            opacity: 1.0;
-            filter:alpha(opacity=100); /* For IE8 and earlier */
+	 .div {
+        opacity: 1.0;
+        filter:alpha(opacity=100); /* For IE8 and earlier */
     }	
 }
 button {
@@ -62,13 +67,33 @@ a:hover, a:active {
   color: red;
   text-decoration: underline;
 }
-.title {
-  border-radius: 4px;
-  background-color:#BBD8DC;
-  border: 1px solid #21618C;
-  color: #21618C;
+.title1 {
+  padding: 10px;
+  border-radius: 50px;
+  background-color:orangered;
+  border: 1px solid red;
+  color: white;
   opacity: 1.0;
   filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+.title1:hover {
+  background-color:white;
+  border: 1px solid red;
+  color: orangered;
+}
+.title2 {
+  padding: 10px;
+  border-radius: 50px;
+  background-color:white;
+  border: 1px solid red;
+  color: orangered;
+  opacity: 1.0;
+  filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+.title2:hover {
+  background-color:orangered;
+  border: 1px solid red;
+  color: white;
 }
 .copyright {
     color: grey;

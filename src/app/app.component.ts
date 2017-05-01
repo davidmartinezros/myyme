@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
 @Component({
@@ -7,15 +7,55 @@ import { Http, Response } from '@angular/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
-  title = 'myyme';
+
+  horizontal = {
+    groesse:  function($el) { console.log("w:" + $el.clientWidth); return $el.clientWidth; },
+    position: function($el) { return $el.clientLeft; },
+    offset:   function($el) { return $el.offsetLeft; },
+    cursor:   function(event) { return event.clientX; },
+  };
+  vertikal = {
+    groesse:  function($el) { console.log("h:" + $el.clientHeight); return $el.clientHeight; },
+    position: function($el) { return $el.clientTop; },
+    offset:   function($el) { return $el.offsetTop; },
+    cursor:   function(event) { return event.clientY; },
+  };
 
   constructor() {
   
   }
 
   ngOnInit(): void {
+    console.log('init');
+  }
 
+  
+
+  koordinate($pupille, $auge, cursor, achse) {
+    var augeGroesse = achse.groesse($auge) - achse.groesse($pupille);
+    //console.log('cursor:' + cursor + '$pupile:' + $pupille);
+    //console.log(achse.cursor(cursor));
+    //console.log(achse.position($pupille));
+    //console.log(achse.offset($pupille));
+    //console.log( achse.groesse($pupille));
+    var abstand = achse.cursor(cursor) +
+                  achse.position($pupille) -
+                  achse.offset($pupille) -
+                  achse.groesse($pupille);
+    //console.log('augeGroesse:' + augeGroesse + 'abstand:' + abstand);
+    return Math.max(0, Math.min(augeGroesse, abstand));
+  }
+
+  @HostListener('mousemove', ['$event'])
+  onMousemove(event: MouseEvent) {
+    //console.log('move');
+    var $pupille = document.getElementById('pupilleLinks');
+    var $auge = document.getElementById('augeLinks');
+    $pupille.style.left = this.koordinate($pupille, $auge, event, this.horizontal) + 'px',
+    $pupille.style.top =  this.koordinate($pupille, $auge, event, this.vertikal) + 'px';
+    //console.log('move_fi');
+    //console.log($pupille.style.left);
+    //console.log($pupille.style.top);
   }
 
 }
