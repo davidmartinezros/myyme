@@ -9,13 +9,13 @@ import { Http, Response } from '@angular/http';
 export class AppComponent implements OnInit {
 
   horizontal = {
-    groesse:  function($el) { console.log("w:" + $el.clientWidth); return $el.clientWidth; },
+    groesse:  function($el) { return $el.clientWidth; },
     position: function($el) { return $el.clientLeft; },
     offset:   function($el) { return $el.offsetLeft; },
     cursor:   function(event) { return event.clientX; },
   };
   vertikal = {
-    groesse:  function($el) { console.log("h:" + $el.clientHeight); return $el.clientHeight; },
+    groesse:  function($el) { return $el.clientHeight; },
     position: function($el) { return $el.clientTop; },
     offset:   function($el) { return $el.offsetTop; },
     cursor:   function(event) { return event.clientY; },
@@ -38,10 +38,12 @@ export class AppComponent implements OnInit {
     //console.log(achse.position($pupille));
     //console.log(achse.offset($pupille));
     //console.log( achse.groesse($pupille));
+    console.log('suma:' + (achse.cursor(cursor) + achse.position($pupille)));
+    console.log('resta:' + (achse.offset($pupille) + achse.groesse($pupille)/2));
     var abstand = achse.cursor(cursor) +
                   achse.position($pupille) -
                   achse.offset($pupille) -
-                  achse.groesse($pupille);
+                  achse.groesse($pupille)/2;
     //console.log('augeGroesse:' + augeGroesse + 'abstand:' + abstand);
     return Math.max(0, Math.min(augeGroesse, abstand));
   }
