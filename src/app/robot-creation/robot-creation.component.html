@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Edat</label>
+        <input type="text" class="form-control" id="age" [(ngModel)]="age" name="age" required>
+      </div>
+      <div class="form-group">
+        <label for="profession">Professió</label>
+        <input type="text" class="form-control" id="profession" [(ngModel)]="profession" name="profession" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Descripció</label>
+        <input type="text" class="form-control" id="description" [(ngModel)]="description" name="description">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>

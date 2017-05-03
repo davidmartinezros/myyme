@@ -68,7 +68,6 @@ a:hover, a:active {
   text-decoration: underline;
 }
 .title1 {
-  margin: 5px;
   padding: 10px;
   border-radius: 50px;
   background-color:orangered;
@@ -83,7 +82,6 @@ a:hover, a:active {
   color: orangered;
 }
 .title2 {
-  margin: 5px;
   padding: 10px;
   border-radius: 50px;
   background-color:white;
@@ -100,4 +98,21 @@ a:hover, a:active {
 .copyright {
     color: grey;
     font-size: small;
+}
+nav a:link, nav a:visited {
+	font-weight: normal;
+  font-size: 100%;
+  padding: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: orangered;
+  color: white;
+	border: 1px solid red;
+  border-radius: 4px;
+  cursor: pointer; cursor: hand;
+}
+nav a:hover, nav a:active {
+  background-color: red;
+  border: 1px solid orangered;
 }

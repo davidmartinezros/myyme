@@ -1,0 +1,39 @@
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Robot } from 'app/robot';
+
+@Component({
+  selector: 'app-robot-creation',
+  templateUrl: './robot-creation.component.html',
+  styleUrls: ['./robot-creation.component.css']
+})
+export class RobotCreationComponent implements OnInit {
+
+  name: string;
+  age: number;
+  profession: string;
+  description: string;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  professions = ['Engineer', 'Doctor', 'Fisic', 'Quimic'];
+
+  model: Robot;
+
+  submitted = false;
+
+  onSubmit() {
+    this.submitted = true;
+    //this.model = new Robot("David", 38, this.professions[0], "The most intelligent in the World");
+    this.model = new Robot(this.name, this.age, this.profession, this.description);
+    console.log(JSON.stringify(this.model));
+    
+  }
+
+  // TODO: Remove this when we're done
+  get robot() { return JSON.stringify(this.model); }
+
+}
