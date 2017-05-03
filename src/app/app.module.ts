@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { RobotCreationComponent } from './robot-creation/robot-creation.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MainComponent } from './main/main.component';
+import { RobotService } from './robot.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { MainComponent } from './main/main.component';
     AppRoutingModule
   ],
   providers: [
-    
+    RobotService
   ],
   bootstrap: [AppComponent]
 })

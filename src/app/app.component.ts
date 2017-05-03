@@ -13,15 +13,11 @@ export class AppComponent implements OnInit {
   }
 
   horizontal = {
-    tamany:  function($el) { return $el.clientWidth; },
-    position: function($el) { return $el.clientLeft; },
-    offset:   function($el) { return $el.offsetLeft; },
+    tamany:  function() { return window.innerWidth; },
     cursor:   function(event) { return event.clientX; },
   };
   vertikal = {
-    tamany:  function($el) { return $el.clientHeight; },
-    position: function($el) { return $el.clientTop; },
-    offset:   function($el) { return $el.offsetTop; },
+    tamany:  function() { return window.innerHeight; },
     cursor:   function(event) { return event.clientY; },
   };
 
@@ -29,7 +25,15 @@ export class AppComponent implements OnInit {
     console.log('init');
   }
 
-  koordinate($pupila, $ull, cursor, achse) {
+  koordinate(cursor, achse) {
+    var tamany = achse.tamany();
+
+    //console.log(Math.floor(100-(100*(1-achse.cursor(cursor)/tamany))));
+
+    var valor = Math.floor(100-(100*(1-achse.cursor(cursor)/tamany)));
+    
+    return Math.min(70,valor);
+    /*
     var tamanyUll = achse.tamany($ull) - achse.tamany($pupila);
 
     var abstand = achse.cursor(cursor) +
@@ -38,7 +42,7 @@ export class AppComponent implements OnInit {
                   achse.tamany($pupila)/2;
     
     return Math.max(0, Math.min(tamanyUll, abstand));
-  
+  */
   }
 
   @HostListener('mousemove', ['$event'])
@@ -48,10 +52,10 @@ export class AppComponent implements OnInit {
     var $pupila2 = document.getElementById('pupilaLinks2');
     var $ull = document.getElementById('ullLinks');
     var $ull2 = document.getElementById('ullLinks2');
-    $pupila.style.left = this.koordinate($pupila, $ull, event, this.horizontal) + 'px',
-    $pupila.style.top =  this.koordinate($pupila, $ull, event, this.vertikal) + 'px';
-    $pupila2.style.left = this.koordinate($pupila2, $ull2, event, this.horizontal) + 'px',
-    $pupila2.style.top =  this.koordinate($pupila2, $ull2, event, this.vertikal) + 'px';
+    $pupila.style.left = this.koordinate(event, this.horizontal) + '%',
+    $pupila.style.top =  this.koordinate(event, this.vertikal) + '%';
+    $pupila2.style.left = this.koordinate(event, this.horizontal) + '%',
+    $pupila2.style.top =  this.koordinate(event, this.vertikal) + '%';
     //console.log('move_fi');
     //console.log($pupille.style.left);
     //console.log($pupille.style.top);

@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Robot } from 'app/robot';
 
+import { RobotService } from 'app/robot.service';
+
 @Component({
   selector: 'app-robot-creation',
   templateUrl: './robot-creation.component.html',
@@ -14,7 +16,7 @@ export class RobotCreationComponent implements OnInit {
   profession: string;
   description: string;
 
-  constructor() { }
+  constructor(private robotService: RobotService) { }
 
   ngOnInit() {
   }
@@ -30,6 +32,8 @@ export class RobotCreationComponent implements OnInit {
     //this.model = new Robot("David", 38, this.professions[0], "The most intelligent in the World");
     this.model = new Robot(this.name, this.age, this.profession, this.description);
     console.log(JSON.stringify(this.model));
+
+    console.log(this.robotService.getRobots());
     
   }
 
