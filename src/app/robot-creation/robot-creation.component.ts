@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Robot } from 'app/robot';
 
+import { Unity } from 'app/unity';
+
 import { RobotService } from 'app/robot.service';
 
 @Component({
@@ -15,6 +17,10 @@ export class RobotCreationComponent implements OnInit {
   age: number;
   profession: string;
   description: string;
+
+  modelUnities: Unity[];
+
+  modelUnity: Unity;
 
   constructor(private robotService: RobotService) { }
 
@@ -31,9 +37,12 @@ export class RobotCreationComponent implements OnInit {
     this.submitted = true;
     //this.model = new Robot("David", 38, this.professions[0], "The most intelligent in the World");
     this.model = new Robot(this.name, this.age, this.profession, this.description);
-    console.log(JSON.stringify(this.model));
+    
+    //console.log(JSON.stringify(this.model));
 
-    console.log(this.robotService.getRobots());
+    this.robotService.getUnities().subscribe(res => this.modelUnities = res);
+    
+    this.robotService.addUnity(new Unity('prova', '', 'prova descripcio')).subscribe(res => this.modelUnity = res);
     
   }
 

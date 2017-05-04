@@ -19,5 +19,18 @@
       </div>
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
+
+    <div *ngFor="let unity of modelUnities">
+      <div>{{unity.concept}}</div>
+      <div>{{unity.image}}</div>
+      <div>{{unity.description}}</div>
+    </div>
+
+    <div *ngIf="modelUnity">
+      <div>{{modelUnity.concept}}</div>
+      <div>{{modelUnity.image}}</div>
+      <div>{{modelUnity.description}}</div>
+    </div>
+
   </div>
 </div>
