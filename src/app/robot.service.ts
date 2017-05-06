@@ -9,10 +9,13 @@ import { Unity } from './unity';
 @Injectable()
 export class RobotService {
     
-    private listUnitiesUrl = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.0.0-SNAPSHOT/api/howdyl/list';
-    private listRobotsUrl = null;
-    private addUnityUrl = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.0.0-SNAPSHOT/api/howdyl/addUnity';
-    private addRobotUrl = null;
+    private server = 'http://localhost:8080/how-do-you-learn/';
+    //private server = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.1.0-SNAPSHOT/';
+
+    private listUnitiesUrl = this.server + 'api/howdyl/listUnities';
+    private addUnityUrl = this.server + 'api/howdyl/addUnity';
+    private listRobotsUrl = this.server + 'api/howdyl/listRobots';
+    private addRobotUrl = this.server + 'api/howdyl/addRobot';
 
     constructor(private http: Http) { }
 
@@ -52,6 +55,7 @@ export class RobotService {
     // Add a new unity
     addUnity (body: Object): Observable<Unity> {
         let bodyString = JSON.stringify(body); // Stringify payload
+        console.log(bodyString);
         let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 

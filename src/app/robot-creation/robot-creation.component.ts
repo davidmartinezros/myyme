@@ -4,6 +4,8 @@ import { Robot } from 'app/robot';
 
 import { Unity } from 'app/unity';
 
+import { UnityWrapper } from 'app/unity-wrapper';
+
 import { RobotService } from 'app/robot.service';
 
 @Component({
@@ -18,6 +20,10 @@ export class RobotCreationComponent implements OnInit {
   profession: string;
   description: string;
 
+  modelRobots: Robot[];
+
+  modelRobot: Robot;
+
   modelUnities: Unity[];
 
   modelUnity: Unity;
@@ -29,24 +35,31 @@ export class RobotCreationComponent implements OnInit {
 
   professions = ['Engineer', 'Doctor', 'Fisic', 'Quimic'];
 
-  model: Robot;
-
-  submitted = false;
-
   onSubmit() {
-    this.submitted = true;
     //this.model = new Robot("David", 38, this.professions[0], "The most intelligent in the World");
-    this.model = new Robot(this.name, this.age, this.profession, this.description);
+    let robot = new Robot(null, this.name, this.age, this.profession, this.description);
     
     //console.log(JSON.stringify(this.model));
 
-    this.robotService.getUnities().subscribe(res => this.modelUnities = res);
+    this.robotService.addRobot(robot).subscribe(res => this.modelRobot = res);
+
+    this.robotService.getRobots().subscribe(res => this.modelRobots = res);
     
-    this.robotService.addUnity(new Unity('prova', '', 'prova descripcio')).subscribe(res => this.modelUnity = res);
+  }
+
+  onSubmitUnity() {
+
+    let unity = new UnityWrapper(this.modelRobot.id, new Unity(null, 'prova', null, 'prova descripcio'));
+
+    console.log(unity);
+
+    this.robotService.addUnity(unity).subscribe(res => this.modelUnity = res);
+
+    this.robotService.getUnities().subscribe(res => this.modelUnities = res);
     
   }
 
   // TODO: Remove this when we're done
-  get robot() { return JSON.stringify(this.model); }
+  get robot() { return JSON.stringify(this.modelRobot); }
 
 }

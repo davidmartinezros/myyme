@@ -20,13 +20,35 @@
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
 
+    <div *ngFor="let robot of modelRobots">
+      <div>{{robot.id}}</div>
+      <div>{{robot.name}}</div>
+      <div>{{robot.age}}</div>
+      <div>{{robot.profession}}</div>
+      <div>{{robot.description}}</div>
+    </div>
+
+    <div *ngIf="modelRobot" class="div">
+      <div>{{modelRobot.id}}</div>
+      <div>{{modelRobot.name}}</div>
+      <div>{{modelRobot.age}}</div>
+      <div>{{modelRobot.profession}}</div>
+      <div>{{modelRobot.description}}</div>
+    </div>
+
+    <form (ngSubmit)="onSubmitUnity()">
+      <button type="submit" class="btn btn-success">Submit Unity ('prova')</button>
+    </form>
+
     <div *ngFor="let unity of modelUnities">
+      <div>{{unity.id}}</div>
       <div>{{unity.concept}}</div>
       <div>{{unity.image}}</div>
       <div>{{unity.description}}</div>
     </div>
 
-    <div *ngIf="modelUnity">
+    <div *ngIf="modelUnity" class="div">
+      <div>{{modelUnity.id}}</div>
       <div>{{modelUnity.concept}}</div>
       <div>{{modelUnity.image}}</div>
       <div>{{modelUnity.description}}</div>
