@@ -9,13 +9,14 @@ import { Unity } from './unity';
 @Injectable()
 export class RobotService {
     
-    private server = 'http://localhost:8080/how-do-you-learn/';
-    //private server = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.1.0-SNAPSHOT/';
+    //private url = 'http://localhost:8080/how-do-you-learn/api/howdyl/';
+    private url = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.4.0-SNAPSHOT/api/howdyl/';
 
-    private listUnitiesUrl = this.server + 'api/howdyl/listUnities';
-    private addUnityUrl = this.server + 'api/howdyl/addUnity';
-    private listRobotsUrl = this.server + 'api/howdyl/listRobots';
-    private addRobotUrl = this.server + 'api/howdyl/addRobot';
+    private listUnitiesUrl = this.url + 'listUnities';
+    private addUnityUrl = this.url + 'createUnity';
+    private listRobotsUrl = this.url + 'listRobots';
+    private addRobotUrl = this.url + 'createRobot';
+    private getRobotUrl = this.url + 'robot';
 
     constructor(private http: Http) { }
 
@@ -30,8 +31,19 @@ export class RobotService {
         
     }
 
+    // Fetch all existing robot
+    getRobot(name: string) : Observable<Robot>{
+         // ...using get request
+         return this.http.get(this.getRobotUrl + "/" + name)
+            // ...and calling .json() on the response to return data
+            .map((res:Response) => res.json())
+            //...errors if any
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        
+    }
+
     // Add a new robot
-    addRobot (body: Object): Observable<Robot> {
+    createRobot (body: Object): Observable<Robot> {
         let bodyString = JSON.stringify(body); // Stringify payload
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
@@ -53,7 +65,7 @@ export class RobotService {
     }
 
     // Add a new unity
-    addUnity (body: Object): Observable<Unity> {
+    createUnity (body: Object): Observable<Unity> {
         let bodyString = JSON.stringify(body); // Stringify payload
         console.log(bodyString);
         let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON

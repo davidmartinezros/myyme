@@ -8,12 +8,14 @@ import { RobotCreationComponent } from './robot-creation/robot-creation.componen
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MainComponent } from './main/main.component';
 import { RobotService } from './robot.service';
+import { RobotGetComponent } from './robot-get/robot-get.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RobotCreationComponent,
-    MainComponent
+    MainComponent,
+    RobotGetComponent
   ],
   imports: [
     BrowserModule,

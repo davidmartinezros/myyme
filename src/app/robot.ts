@@ -1,3 +1,5 @@
+import { Unity } from './unity';
+
 export class Robot {
 
     constructor(
@@ -5,7 +7,8 @@ export class Robot {
     public name: string,
     public age: number,
     public profession: string,
-    public description?: string
+    public description?: string,
+    public unities?: Unity[]
   ) {  }
 
 }

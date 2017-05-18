@@ -41,7 +41,7 @@ export class RobotCreationComponent implements OnInit {
     
     //console.log(JSON.stringify(this.model));
 
-    this.robotService.addRobot(robot).subscribe(res => this.modelRobot = res);
+    this.robotService.createRobot(robot).subscribe(res => this.modelRobot = res);
 
     this.robotService.getRobots().subscribe(res => this.modelRobots = res);
     
@@ -53,7 +53,7 @@ export class RobotCreationComponent implements OnInit {
 
     console.log(unity);
 
-    this.robotService.addUnity(unity).subscribe(res => this.modelUnity = res);
+    this.robotService.createUnity(unity).subscribe(res => this.modelUnity = res);
 
     this.robotService.getUnities().subscribe(res => this.modelUnities = res);
     
