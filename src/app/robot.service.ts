@@ -14,6 +14,7 @@ export class RobotService {
 
     private listUnitiesUrl = this.url + 'listUnities';
     private addUnityUrl = this.url + 'createUnity';
+    private getUnityUrl = this.url + 'unity';
     private listRobotsUrl = this.url + 'listRobots';
     private addRobotUrl = this.url + 'createRobot';
     private getRobotUrl = this.url + 'robot';
@@ -57,6 +58,17 @@ export class RobotService {
     getUnities() : Observable<Unity[]>{
          // ...using get request
          return this.http.get(this.listUnitiesUrl)
+            // ...and calling .json() on the response to return data
+            .map((res:Response) => res.json())
+            //...errors if any
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        
+    }
+
+    // Fetch all existing robot
+    getUnity(concept: string) : Observable<Unity>{
+         // ...using get request
+         return this.http.get(this.getUnityUrl + "/" + concept)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
             //...errors if any

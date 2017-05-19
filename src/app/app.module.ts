@@ -13,6 +13,7 @@ import { PrintUnitiesComponent } from './print-unities/print-unities.component';
 import { RobotListComponent } from './robot-list/robot-list.component';
 import { UnitiesListComponent } from './unities-list/unities-list.component';
 import { UnityCreationComponent } from './unity-creation/unity-creation.component';
+import { UnityGetComponent } from './unity-get/unity-get.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UnityCreationComponent } from './unity-creation/unity-creation.componen
     PrintUnitiesComponent,
     RobotListComponent,
     UnitiesListComponent,
-    UnityCreationComponent
+    UnityCreationComponent,
+    UnityGetComponent
   ],
   imports: [
     BrowserModule,

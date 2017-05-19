@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
-import { Location }                 from '@angular/common';
 
 import { RobotService } from '../robot.service';
 
@@ -16,7 +15,7 @@ export class RobotGetComponent implements OnInit {
   modelRobot: Robot;
 
   constructor(private robotService: RobotService,
-        private route: ActivatedRoute,) { }
+        private route: ActivatedRoute) { }
 
   ngOnInit(): void {
         this.route.params.forEach((params: Params) => {

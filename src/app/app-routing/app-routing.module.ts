@@ -6,6 +6,7 @@ import { RobotGetComponent }   from '../robot-get/robot-get.component';
 import { RobotListComponent } from '../robot-list/robot-list.component';
 import { UnitiesListComponent } from '../unities-list/unities-list.component';
 import { UnityCreationComponent } from '../unity-creation/unity-creation.component';
+import { UnityGetComponent } from '../unity-get/unity-get.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/into', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'robotGet/:name', component: RobotGetComponent },
   { path: 'robotList', component: RobotListComponent },
   { path: 'unityCreation', component: UnityCreationComponent },
+  { path: 'unityGet/:concept', component: UnityGetComponent },
   { path: 'unitiesList', component: UnitiesListComponent }
 ];
 

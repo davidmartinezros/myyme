@@ -1,0 +1,10 @@
+AQUESTA ES LA TEVA UNITAT:
+<div *ngIf="modelUnity" class="div">
+  <div>{{modelUnity.id}}</div>
+  <div>{{modelUnity.concept}}</div>
+  <div>{{modelUnity.image}}</div>
+  <div>{{modelUnity.description}}</div>
+
+  <app-print-unities [unities]="modelUnity.unities"></app-print-unities>
+
+</div>
