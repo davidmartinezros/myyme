@@ -4,8 +4,6 @@ import { Robot } from 'app/robot';
 
 import { Unity } from 'app/unity';
 
-import { UnityWrapper } from 'app/unity-wrapper';
-
 import { RobotService } from 'app/robot.service';
 
 @Component({
@@ -20,13 +18,13 @@ export class RobotCreationComponent implements OnInit {
   profession: string;
   description: string;
 
-  modelRobots: Robot[];
+  //modelRobots: Robot[];
 
   modelRobot: Robot;
 
-  modelUnities: Unity[];
+  //modelUnities: Unity[];
 
-  modelUnity: Unity;
+  //modelUnity: Unity;
 
   constructor(private robotService: RobotService) { }
 
@@ -43,19 +41,7 @@ export class RobotCreationComponent implements OnInit {
 
     this.robotService.createRobot(robot).subscribe(res => this.modelRobot = res);
 
-    this.robotService.getRobots().subscribe(res => this.modelRobots = res);
-    
-  }
-
-  onSubmitUnity() {
-
-    let unity = new UnityWrapper(this.modelRobot.id, new Unity(null, 'prova', null, 'prova descripcio'));
-
-    console.log(unity);
-
-    this.robotService.createUnity(unity).subscribe(res => this.modelUnity = res);
-
-    this.robotService.getUnities().subscribe(res => this.modelUnities = res);
+    ///this.robotService.getRobots().subscribe(res => this.modelRobots = res);
     
   }
 

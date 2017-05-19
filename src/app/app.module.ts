@@ -10,6 +10,9 @@ import { MainComponent } from './main/main.component';
 import { RobotService } from './robot.service';
 import { RobotGetComponent } from './robot-get/robot-get.component';
 import { PrintUnitiesComponent } from './print-unities/print-unities.component';
+import { RobotListComponent } from './robot-list/robot-list.component';
+import { UnitiesListComponent } from './unities-list/unities-list.component';
+import { UnityCreationComponent } from './unity-creation/unity-creation.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { PrintUnitiesComponent } from './print-unities/print-unities.component';
     RobotCreationComponent,
     MainComponent,
     RobotGetComponent,
-    PrintUnitiesComponent
+    PrintUnitiesComponent,
+    RobotListComponent,
+    UnitiesListComponent,
+    UnityCreationComponent
   ],
   imports: [
     BrowserModule,

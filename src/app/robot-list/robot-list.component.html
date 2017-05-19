@@ -1,0 +1,12 @@
+<p>
+  robot-list works!
+</p>
+
+<div *ngFor="let robot of modelRobots" (click)="gotoCreateUnity(robot)">
+  <div>{{robot.id}}</div>
+  <div>{{robot.name}}</div>
+  <div>{{robot.age}}</div>
+  <div>{{robot.profession}}</div>
+  <div>{{robot.description}}</div>
+
+</div>
