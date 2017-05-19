@@ -6,23 +6,6 @@ AQUEST ES El TEU ROBOT:
   <div>{{modelRobot.profession}}</div>
   <div>{{modelRobot.description}}</div>
 
-  <div *ngFor="let unity of modelRobot.unities" class="div">
-    <div>{{unity.id}}</div>
-    <div>{{unity.concept}}</div>
-    <div>{{unity.image}}</div>
-    <div>{{unity.description}}</div>
-
-    <div *ngFor="let tag of unity.tags">
-      <div>{{tag}}</div>
-    </div>
-
-    <div *ngFor="let unity1 of unity.unities"  class="div">
-      <div>{{unity1.id}}</div>
-      <div>{{unity1.concept}}</div>
-      <div>{{unity1.image}}</div>
-      <div>{{unity1.description}}</div>
-    </div>
-
-  </div>
+  <app-print-unities [unities]="modelRobot.unities"></app-print-unities>
 
 </div>

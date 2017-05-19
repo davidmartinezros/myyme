@@ -9,13 +9,15 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MainComponent } from './main/main.component';
 import { RobotService } from './robot.service';
 import { RobotGetComponent } from './robot-get/robot-get.component';
+import { PrintUnitiesComponent } from './print-unities/print-unities.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RobotCreationComponent,
     MainComponent,
-    RobotGetComponent
+    RobotGetComponent,
+    PrintUnitiesComponent
   ],
   imports: [
     BrowserModule,

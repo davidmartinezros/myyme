@@ -1,0 +1,17 @@
+<p>
+  print-unities works!
+</p>
+
+<div *ngFor="let unity of unities" class="div">
+  <div>{{unity.id}}</div>
+  <div>{{unity.concept}}</div>
+  <div>{{unity.image}}</div>
+  <div>{{unity.description}}</div>
+
+  <div *ngFor="let tag of unity.tags">
+    <div>{{tag}}</div>
+  </div>
+
+  <app-print-unities [unities]="unity.unities" ></app-print-unities>
+
+</div>
