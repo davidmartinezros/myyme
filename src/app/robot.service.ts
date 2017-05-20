@@ -27,6 +27,8 @@ export class RobotService {
          return this.http.get(this.listRobotsUrl)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
+            // ... do 3 tries
+            .retry(3)
             //...errors if any
             .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
         
@@ -38,6 +40,8 @@ export class RobotService {
          return this.http.get(this.getRobotUrl + "/" + name)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
+            // ... do 3 tries
+            .retry(3)
             //...errors if any
             .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
         
@@ -49,9 +53,14 @@ export class RobotService {
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
-        return this.http.post(this.addRobotUrl, body, options) // ...using post request
-                .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-                .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+        // ...using post request
+        return this.http.post(this.addRobotUrl, body, options)
+                // ...and calling .json() on the response to return data
+                .map((res:Response) => res.json()) 
+                // ... do 3 tries
+                .retry(3)
+                //...errors if any
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     // Fetch all existing unities
@@ -60,6 +69,8 @@ export class RobotService {
          return this.http.get(this.listUnitiesUrl)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
+            // ... do 3 tries
+            .retry(3)
             //...errors if any
             .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
         
@@ -71,6 +82,8 @@ export class RobotService {
          return this.http.get(this.getUnityUrl + "/" + concept)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
+            // ... do 3 tries
+            .retry(3)
             //...errors if any
             .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
         
@@ -83,9 +96,14 @@ export class RobotService {
         let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
-        return this.http.post(this.addUnityUrl, body, options) // ...using post request
-                .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-                .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+        // ...using post request
+        return this.http.post(this.addUnityUrl, body, options)
+                // ...and calling .json() on the response to return data
+                .map((res:Response) => res.json())
+                // ... do 3 tries
+                .retry(3)
+                //...errors if any
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
 }
