@@ -1,5 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+
+import { Router } from '@angular/router';
+
 import { Unity } from '../unity';
+
+import { Robot } from '../robot';
 
 @Component({
   selector: 'app-print-unities',
@@ -8,11 +13,23 @@ import { Unity } from '../unity';
 })
 export class PrintUnitiesComponent implements OnInit {
 
+  @Input() modelRobot: Robot;
+
   @Input() unities: Unity[];
   
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+
+  }
+
+  gotoCreateUnity() {
+
+    console.log(this.modelRobot);
+    
+    let link = ['/unityCreation', this.modelRobot.name];
+    this.router.navigate(link);
+
   }
 
 }

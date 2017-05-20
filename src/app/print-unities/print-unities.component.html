@@ -1,17 +1,32 @@
-<p>
-  print-unities works!
-</p>
+<div class="capcalera">
+  <div>UNITATS</div>
+  <div (click)="gotoCreateUnity()">Afegir Unitat</div>
+</div>
+
+<div *ngIf="unities.length == 0">
+  <div>No n'hi ha</div>
+</div>
 
 <div *ngFor="let unity of unities" class="div">
-  <div>{{unity.id}}</div>
-  <div>{{unity.concept}}</div>
-  <div>{{unity.image}}</div>
-  <div>{{unity.description}}</div>
+  <div>Id: {{unity.id}}</div>
+  <div>Concepte: {{unity.concept}}</div>
+  <div>Imatge: {{unity.image}}</div>
+  <div>Descripció: {{unity.description}}</div>
 
-  <div *ngFor="let tag of unity.tags">
-    <div>{{tag}}</div>
+  <div class="capcalera">TAGS</div>
+
+  <div *ngIf="unity.tags > 0">
+    <div *ngFor="let tag of unity.tags">
+      <div>{{tag}}</div>
+    </div>
   </div>
 
-  <app-print-unities [unities]="unity.unities" ></app-print-unities>
+  <div *ngIf="unity.tags == 0">
+      <div>No n'hi ha</div>
+  </div>
+
+  <button>Afegir Tag</button>
+
+  <app-print-unities [modelRobot]="modelRobot" [unities]="unity.unities" ></app-print-unities>
 
 </div>

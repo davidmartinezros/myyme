@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { ActivatedRoute, Params }   from '@angular/router';
+
 import { Robot } from 'app/robot';
 
 import { Unity } from 'app/unity';
@@ -23,9 +25,16 @@ export class UnityCreationComponent implements OnInit {
 
   modelUnity: Unity;
 
-  constructor(private robotService: RobotService) { }
+  constructor(private route: ActivatedRoute,
+              private robotService: RobotService) { }
 
   ngOnInit() {
+    this.route.params.forEach((params: Params) => {
+        let name = params['name'];
+        console.log(name);
+        this.robotService.getRobot(name)
+                .subscribe(res => this.modelRobot = res);
+    });
   }
 
   onSubmit() {

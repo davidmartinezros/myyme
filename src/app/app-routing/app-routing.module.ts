@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'robotCreation', component: RobotCreationComponent },
   { path: 'robotGet/:name', component: RobotGetComponent },
   { path: 'robotList', component: RobotListComponent },
-  { path: 'unityCreation', component: UnityCreationComponent },
+  { path: 'unityCreation/:name', component: UnityCreationComponent },
   { path: 'unityGet/:concept', component: UnityGetComponent },
   { path: 'unitiesList', component: UnitiesListComponent }
 ];

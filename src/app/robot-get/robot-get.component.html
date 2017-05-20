@@ -1,11 +1,11 @@
-AQUEST ES El TEU ROBOT:
+<div>Aquest és el robot</div>  
 <div *ngIf="modelRobot" class="div">
-  <div>{{modelRobot.id}}</div>
-  <div>{{modelRobot.name}}</div>
-  <div>{{modelRobot.age}}</div>
-  <div>{{modelRobot.profession}}</div>
-  <div>{{modelRobot.description}}</div>
+  <div class="capcalera"><b>Id:</b> {{modelRobot.id}}</div>
+  <div><b>Nom:</b> {{modelRobot.name}}</div>
+  <div><b>Edat:</b> {{modelRobot.age}}</div>
+  <div><b>Professió:</b> {{modelRobot.profession}}</div>
+  <div><b>Descripció:</b> {{modelRobot.description}}</div>
 
-  <app-print-unities [unities]="modelRobot.unities"></app-print-unities>
+  <app-print-unities [modelRobot]="modelRobot" [unities]="modelRobot.unities"></app-print-unities>
 
 </div>

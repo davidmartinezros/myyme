@@ -31,7 +31,7 @@ export class RobotListComponent implements OnInit {
 
   gotoCreateUnity(robot: Robot) {
 
-    let link = ['/unityCreation', robot];
+    let link = ['/unityCreation', robot.name];
     this.router.navigate(link);
 
   }

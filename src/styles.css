@@ -116,3 +116,11 @@ nav a:hover, nav a:active {
   background-color: red;
   border: 1px solid orangered;
 }
+.capcalera {
+	border-radius: 4px;
+  background-color:#BBD8DC;
+	border: 1px solid #21618C;
+	color: #21618C;
+  opacity: 1.0;
+  filter:alpha(opacity=100); /* For IE8 and earlier */
+}
