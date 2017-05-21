@@ -32,4 +32,13 @@ export class PrintUnitiesComponent implements OnInit {
 
   }
 
+  gotoCreateTag(unity: Unity) {
+
+    console.log(this.modelRobot);
+    
+    let link = ['/tagCreation', this.modelRobot.name, unity.concept];
+    this.router.navigate(link);
+
+  }
+
 }

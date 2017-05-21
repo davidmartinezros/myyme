@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Tag</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="tag" name="tag" required>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+    <div *ngIf="modelRobot" class="div">
+      <div>Id: {{modelRobot.id}}</div>
+      <div>Nom: {{modelRobot.name}}</div>
+      <div>Edat: {{modelRobot.age}}</div>
+      <div>Professió: {{modelRobot.profession}}</div>
+      <div>Descripció: {{modelRobot.description}}</div>
+    </div>
+
+    <div *ngIf="modelUnity" class="div">
+      <div>{{modelUnity.id}}</div>
+      <div>{{modelUnity.concept}}</div>
+      <div>{{modelUnity.image}}</div>
+      <div>{{modelUnity.description}}</div>
+    </div>
+
+  </div>
+</div>

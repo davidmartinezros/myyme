@@ -7,6 +7,7 @@ import { RobotListComponent } from '../robot-list/robot-list.component';
 import { UnitiesListComponent } from '../unities-list/unities-list.component';
 import { UnityCreationComponent } from '../unity-creation/unity-creation.component';
 import { UnityGetComponent } from '../unity-get/unity-get.component';
+import { TagCreationComponent } from '../tag-creation/tag-creation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/into', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'robotList', component: RobotListComponent },
   { path: 'unityCreation/:name', component: UnityCreationComponent },
   { path: 'unityGet/:concept', component: UnityGetComponent },
-  { path: 'unitiesList', component: UnitiesListComponent }
+  { path: 'unitiesList', component: UnitiesListComponent },
+  { path: 'tagCreation/:name/:concept', component: TagCreationComponent },
 ];
 
 @NgModule({

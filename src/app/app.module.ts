@@ -14,6 +14,7 @@ import { RobotListComponent } from './robot-list/robot-list.component';
 import { UnitiesListComponent } from './unities-list/unities-list.component';
 import { UnityCreationComponent } from './unity-creation/unity-creation.component';
 import { UnityGetComponent } from './unity-get/unity-get.component';
+import { TagCreationComponent } from './tag-creation/tag-creation.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UnityGetComponent } from './unity-get/unity-get.component';
     RobotListComponent,
     UnitiesListComponent,
     UnityCreationComponent,
-    UnityGetComponent
+    UnityGetComponent,
+    TagCreationComponent
   ],
   imports: [
     BrowserModule,

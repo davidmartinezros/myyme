@@ -1,32 +1,36 @@
 <div class="capcalera">
   <div>UNITATS</div>
-  <div (click)="gotoCreateUnity()">Afegir Unitat</div>
-</div>
+  <button (click)="gotoCreateUnity()">Afegir Unitat</button>
 
-<div *ngIf="unities.length == 0">
-  <div>No n'hi ha</div>
-</div>
 
-<div *ngFor="let unity of unities" class="div">
-  <div>Id: {{unity.id}}</div>
-  <div>Concepte: {{unity.concept}}</div>
-  <div>Imatge: {{unity.image}}</div>
-  <div>Descripció: {{unity.description}}</div>
+  <div *ngIf="unities.length == 0" class="div">
+    <div>No n'hi ha</div>
+  </div>
 
-  <div class="capcalera">TAGS</div>
+  <div *ngFor="let unity of unities" class="div">
+    <div>Id: {{unity.id}}</div>
+    <div>Concepte: {{unity.concept}}</div>
+    <div>Imatge: {{unity.image}}</div>
+    <div>Descripció: {{unity.description}}</div>
+    
+    <div class="capcalera">
+      <div>TAGS</div>
+      <button (click)="gotoCreateTag(unity)">Afegir Tag</button>
 
-  <div *ngIf="unity.tags > 0">
-    <div *ngFor="let tag of unity.tags">
-      <div>{{tag}}</div>
+      <div *ngIf="unity.tags.length > 0">
+        <div *ngFor="let tag of unity.tags" class="div">
+          <div>{{tag}}</div>
+        </div>
+      </div>
+
+      <div *ngIf="unity.tags.length == 0" class="div">
+          <div>No n'hi ha</div>
+      </div>
+
+      <app-print-unities [modelRobot]="modelRobot" [unities]="unity.unities"></app-print-unities>
+
     </div>
+
   </div>
-
-  <div *ngIf="unity.tags == 0">
-      <div>No n'hi ha</div>
-  </div>
-
-  <button>Afegir Tag</button>
-
-  <app-print-unities [modelRobot]="modelRobot" [unities]="unity.unities" ></app-print-unities>
 
 </div>
