@@ -2,7 +2,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 h1 {
-  font-size: 1000%;
+  font-size: 800%;
 }
 /* Imagen utilizada por defecto, la que se utlizará en pantallas pequeñas */
 body {
@@ -10,11 +10,9 @@ body {
 	margin: 0;
 	padding: 10px;
 }
-div {
+.div {
   padding: 10px;
   margin: 1px;
-}
-.div {
   border-radius: 4px;
   list-style-type: circle;
   color: #21618C;
@@ -49,7 +47,6 @@ button {
   color: white;
   background-color: orangered;
   border: 1px solid red;
-  padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer; cursor: hand;
 }
@@ -69,6 +66,7 @@ a:hover, a:active {
 }
 .title1 {
   padding: 10px;
+  margin: 5px;
   border-radius: 50px;
   background-color:orangered;
   border: 1px solid red;
@@ -83,6 +81,7 @@ a:hover, a:active {
 }
 .title2 {
   padding: 10px;
+  margin: 5px;
   border-radius: 50px;
   background-color:white;
   border: 1px solid red;
