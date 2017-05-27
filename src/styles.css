@@ -7,14 +7,15 @@ h1 {
 /* Imagen utilizada por defecto, la que se utlizará en pantallas pequeñas */
 body {
   background-color: white;
-	margin: 0;
-	padding: 10px;
+	margin: 0px;
+  padding-top: 15px;
+	padding-left: 15px;
+  padding-right: 15px;
 }
 .div {
   padding: 10px;
   margin: 1px;
   border-radius: 4px;
-  list-style-type: circle;
   color: #21618C;
   background-color: #fff;
   border: 1px solid #21618C;
@@ -122,4 +123,7 @@ nav a:hover, nav a:active {
 	color: #21618C;
   opacity: 1.0;
   filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+ul li {
+    list-style-type: circle;
 }
