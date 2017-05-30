@@ -1,4 +1,12 @@
-<div>Aquest és el robot</div>  
+<div>Aquest és el robot</div>
+<form (ngSubmit)="searchRobot()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" required>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="reset" class="btn btn-info">Reset</button>
+</form>
 <div *ngIf="modelRobot" class="div">
   <div class="capcalera"><b>Id:</b> {{modelRobot.id}}</div>
   <div><b>Nom:</b> {{modelRobot.name}}</div>
@@ -9,3 +17,5 @@
   <app-print-unities [modelRobot]="modelRobot" [unities]="modelRobot.unities"></app-print-unities>
 
 </div>
+
+<button class="btn btn-alert" (click)="goBack()">Back</button>

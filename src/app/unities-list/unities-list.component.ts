@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from '@angular/common';
+  
 import { Unity } from 'app/unity';
 
 import { RobotService } from 'app/robot.service';
@@ -13,12 +14,19 @@ export class UnitiesListComponent implements OnInit {
 
   modelUnities: Unity[];
 
-  constructor(private robotService: RobotService) { }
+  constructor(private robotService: RobotService,
+              private location: Location) { }
 
   ngOnInit() {
     
     this.robotService.getUnities().subscribe(res => this.modelUnities = res);
 
+  }
+
+  goBack(): void {
+
+      this.location.back();
+  
   }
 
 }

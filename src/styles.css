@@ -127,6 +127,9 @@ nav a:hover, nav a:active {
 ul li {
     list-style-type: circle;
 }
+mouseCursor:hover {
+  cursor: pointer; cursor: hand;
+}
 /* CUBES IN CSS*/
 /*
 body{

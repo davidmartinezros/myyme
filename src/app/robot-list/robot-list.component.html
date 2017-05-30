@@ -1,12 +1,11 @@
-<p>
-  robot-list works!
-</p>
+<div>Aquesta és la llista de robots</div>
 
-<div *ngFor="let robot of modelRobots" (click)="gotoCreateUnity(robot)">
-  <div>{{robot.id}}</div>
-  <div>{{robot.name}}</div>
-  <div>{{robot.age}}</div>
-  <div>{{robot.profession}}</div>
-  <div>{{robot.description}}</div>
-
+<div *ngFor="let robot of modelRobots" (click)="gotoCreateUnity(robot)" class="mouseCursor div">
+  <div class="capcalera"><b>Id:</b> {{robot.id}}</div>
+  <div><b>Nom:</b> {{robot.name}}</div>
+  <div><b>Edat:</b> {{robot.age}}</div>
+  <div><b>Professió:</b> {{robot.profession}}</div>
+  <div><b>Descripció:</b> {{robot.description}}</div>
 </div>
+
+<button class="btn btn-alert" (click)="goBack()">Back</button>

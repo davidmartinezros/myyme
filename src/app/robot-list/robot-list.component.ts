@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { Robot } from 'app/robot';
 
@@ -15,7 +16,8 @@ export class RobotListComponent implements OnInit {
   modelRobots: Robot[];
 
   constructor(private robotService: RobotService,
-              private router: Router) { }
+              private router: Router,
+              private location: Location) { }
 
   ngOnInit() {
 
@@ -34,6 +36,12 @@ export class RobotListComponent implements OnInit {
     let link = ['/unityCreation', robot.name];
     this.router.navigate(link);
 
+  }
+
+  goBack(): void {
+
+      this.location.back();
+  
   }
 
 }

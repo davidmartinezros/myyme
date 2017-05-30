@@ -1,10 +1,20 @@
-AQUESTA ES LA TEVA UNITAT:
+<div>Aquest és la unitat de coneixement</div>
+<form (ngSubmit)="searchUnity()">
+    <div class="form-group">
+      <label for="name">Concepte</label>
+      <input type="text" class="form-control" id="concept" [(ngModel)]="concept" name="concept" required>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="reset" class="btn btn-info">Reset</button>
+</form>
 <div *ngIf="modelUnity" class="div">
-  <div>{{modelUnity.id}}</div>
-  <div>{{modelUnity.concept}}</div>
-  <div>{{modelUnity.image}}</div>
-  <div>{{modelUnity.description}}</div>
+  <div class="capcalera"><b>Id:</b> {{modelUnity.id}}</div>
+  <div><b>Concepte:</b> {{modelUnity.concept}}</div>
+  <div><b>Imatge:</b> {{modelUnity.image}}</div>
+  <div><b>Descripció:</b> {{modelUnity.description}}</div>
 
   <app-print-unities [unities]="modelUnity.unities"></app-print-unities>
 
 </div>
+
+<button class="btn btn-alert" (click)="goBack()">Back</button>

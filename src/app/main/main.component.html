@@ -7,23 +7,35 @@
           <p>Hola!</p>
           <p><b>Sóc el que tu vulguis que sigui!</b></p>
           <p>Estic fet amb la nova tecnologia d'aprenentatge amb <b>inteligència artificial</b> <i>howdyl versió 2.4.0-SNAPSHOT</i>.</p>
-          <nav>
-            <a routerLink="/robotCreation" routerLinkActive="active">Crea'm i invita'm a la teva vida!</a>
-          </nav>
+          <button (click)="goRobotCreation()" class="btn btn-danger">Crea'm i invita'm a la teva vida!</button>
         </div>
       </div>
       <div class="row">
 
         <div class="div col-xs-12">
           <ul><span class="capcalera"><b>Coses que puc fer?</b></span>
-            <li><span class="tema">Estudiar tema.</span></li>
-            <li><span class="tema">Explicar-te un tema conegut.</span></li>
-            <li><span class="tema">Proposar temes d'interés.</span></li>
-            <li><span class="tema">Explicar anécdota del dia.</span></li>
+            <li><span class="tema">Estudiar tema</span></li>
+            <li><span class="tema">Explicar-te un tema conegut</span></li>
+            <li><span class="tema">Proposar temes d'interés</span></li>
+            <li><span class="tema">Explicar anécdota del dia</span></li>
           </ul>
         </div>
         
       </div>
+
+      <div class="row">
+
+        <div class="div col-xs-12">
+          <ul><span class="capcalera"><b>Generació manual</b></span>
+            <li><span class="tema" (click)="llistarRobots()">Llistar robots</span></li>
+            <li><span class="tema" (click)="getRobot()">Consultar robot</span></li>
+            <li><span class="tema" (click)="llistarUnitats()">Llistar unitats de coneixement</span></li>
+            <li><span class="tema" (click)="getUnitat()">Consultar unitat de coneixement</span></li>
+          </ul>
+        </div>
+        
+      </div>
+
     </div>
   </div>
 </div>

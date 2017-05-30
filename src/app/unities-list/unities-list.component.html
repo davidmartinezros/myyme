@@ -1,10 +1,10 @@
-<p>
-  unities-list works!
-</p>
+<div>Aquesta és la llista d'unitats de coneixement</div>
 
-<div *ngFor="let unity of modelUnities">
-  <div>{{unity.id}}</div>
-  <div>{{unity.concept}}</div>
-  <div>{{unity.image}}</div>
-  <div>{{unity.description}}</div>
+<div *ngFor="let unity of modelUnities" class="div">
+  <div class="capcalera"><b>Id:</b> {{unity.id}}</div>
+  <div><b>Concepte:</b> {{unity.concept}}</div>
+  <div><b>Imatge:</b> {{unity.image}}</div>
+  <div><b>Descripció:</b> {{unity.description}}</div>
 </div>
+
+<button class="btn btn-alert" (click)="goBack()">Back</button>

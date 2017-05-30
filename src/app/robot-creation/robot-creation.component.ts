@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { Robot } from 'app/robot';
 
@@ -26,7 +27,8 @@ export class RobotCreationComponent implements OnInit {
 
   //modelUnity: Unity;
 
-  constructor(private robotService: RobotService) { }
+  constructor(private robotService: RobotService,
+    private location: Location) { }
 
   ngOnInit() {
   }
@@ -43,6 +45,10 @@ export class RobotCreationComponent implements OnInit {
 
     ///this.robotService.getRobots().subscribe(res => this.modelRobots = res);
     
+  }
+
+  goBack(): void {
+      this.location.back();
   }
 
   // TODO: Remove this when we're done

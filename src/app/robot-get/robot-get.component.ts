@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
+import { Location } from '@angular/common';
 
 import { RobotService } from '../robot.service';
 
@@ -12,17 +13,37 @@ import { Robot } from '../robot';
 })
 export class RobotGetComponent implements OnInit {
 
-  modelRobot: Robot;
+    modelRobot: Robot;
 
-  constructor(private robotService: RobotService,
-        private route: ActivatedRoute) { }
+    name: string;
 
-  ngOnInit(): void {
+    constructor(private robotService: RobotService,
+        private route: ActivatedRoute,
+        private location: Location) { }
+
+    ngOnInit(): void {
+
         this.route.params.forEach((params: Params) => {
-            let name = params['name'];
-            this.robotService.getRobot(name)
-                .subscribe(res => this.modelRobot = res);
+            this.name = params['name'];
+            if(this.name != '') {
+                this.robotService.getRobot(this.name)
+                    .subscribe(res => this.modelRobot = res);
+            }
         });
+
+    }
+
+    searchRobot() {
+        console.log(this.name);
+        if(this.name != '') {
+            this.robotService.getRobot(this.name)
+                    .subscribe(res => this.modelRobot = res);
+        }
+
+    }
+
+    goBack() {
+        this.location.back();
     }
 
 }

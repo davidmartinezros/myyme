@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { ActivatedRoute, Params }   from '@angular/router';
 
@@ -15,15 +16,33 @@ export class UnityGetComponent implements OnInit {
 
   modelUnity: Unity;
 
+  concept: string;
+
   constructor(private robotService: RobotService,
-        private route: ActivatedRoute) { }
+        private route: ActivatedRoute,
+        private location: Location) { }
 
   ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
-            let concept = params['concept'];
-            this.robotService.getUnity(concept)
-                .subscribe(res => this.modelUnity = res);
+            this.concept = params['concept'];
+            if(this.concept != '') {
+                this.robotService.getUnity(this.concept)
+                    .subscribe(res => this.modelUnity = res);
+            }
         });
+    }
+
+    searchUnity() {
+        console.log(this.concept);
+        if(this.concept != '') {
+            this.robotService.getUnity(this.concept)
+                    .subscribe(res => this.modelUnity = res);
+        }
+
+    }
+
+    goBack() {
+        this.location.back();
     }
 
 }
