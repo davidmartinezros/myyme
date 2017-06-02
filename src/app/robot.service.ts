@@ -10,14 +10,16 @@ import { Unity } from './unity';
 export class RobotService {
     
     //private url = 'http://localhost:8080/how-do-you-learn/api/howdyl/';
-    private url = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.5.0-SNAPSHOT/api/howdyl/';
+    private url = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.6.0-SNAPSHOT/api/howdyl/';
 
     private listUnitiesUrl = this.url + 'listUnities';
     private addUnityUrl = this.url + 'createUnity';
     private getUnityUrl = this.url + 'unity';
+    private removeUnityUrl = this.url + 'removeUnity';
     private listRobotsUrl = this.url + 'listRobots';
     private addRobotUrl = this.url + 'createRobot';
     private getRobotUrl = this.url + 'robot';
+    private removeRobotUrl = this.url + 'removeRobot';
     private addTagUrl = this.url + 'createTag';
 
     constructor(private http: Http) { }
@@ -64,6 +66,22 @@ export class RobotService {
                 .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
+    // Remove an existing robot
+    removeRobot (nameRobot: string): Observable<Robot> {
+        console.log(nameRobot);
+        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
+        // ...using post request
+        return this.http.get(this.removeRobotUrl + "?name_robot=" + nameRobot)
+                // ...and calling .json() on the response to return data
+                .map((res:Response) => res.json()) 
+                // ... do 3 tries
+                .retry(3)
+                //...errors if any
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
     // Fetch all existing unities
     getUnities() : Observable<Unity[]>{
          // ...using get request
@@ -99,6 +117,23 @@ export class RobotService {
 
         // ...using post request
         return this.http.post(this.addUnityUrl, body, options)
+                // ...and calling .json() on the response to return data
+                .map((res:Response) => res.json())
+                // ... do 3 tries
+                .retry(3)
+                //...errors if any
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    // Remove an existing unity
+    removeUnity (body: Object): Observable<Unity> {
+        let bodyString = JSON.stringify(body); // Stringify payload
+        console.log(bodyString);
+        let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
+        // ...using post request
+        return this.http.post(this.removeUnityUrl, body, options)
                 // ...and calling .json() on the response to return data
                 .map((res:Response) => res.json())
                 // ... do 3 tries

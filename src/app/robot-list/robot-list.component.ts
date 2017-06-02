@@ -13,6 +13,8 @@ import { RobotService } from 'app/robot.service';
 })
 export class RobotListComponent implements OnInit {
 
+  modelRobot: Robot;
+
   modelRobots: Robot[];
 
   constructor(private robotService: RobotService,
@@ -42,6 +44,27 @@ export class RobotListComponent implements OnInit {
 
       this.location.back();
   
+  }
+
+  removeRobot(robot: Robot) {
+
+    console.log(robot.name);
+
+    //let removeRobot: RemoveRobot = new RemoveRobot(robot.name);
+
+    //this.robotService.removeRobot(robot.name).subscribe(res => this.modelRobot = res);
+
+    this.robotService.removeRobot(robot.name).subscribe(
+        x => {
+              console.log('onNext: %s', x);
+              this.modelRobot = x;
+              },
+        e => console.log('onError: %s', e),
+        () => {
+              console.log('onCompleted')
+              this.robotService.getRobots().subscribe(res => this.modelRobots = res)
+              });
+
   }
 
 }
