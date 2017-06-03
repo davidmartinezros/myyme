@@ -10,6 +10,8 @@ import { UnityWrapper } from 'app/unity-wrapper';
 
 import { RobotService } from 'app/robot.service';
 
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-unity-creation',
   templateUrl: './unity-creation.component.html',
@@ -26,7 +28,8 @@ export class UnityCreationComponent implements OnInit {
   modelUnity: Unity;
 
   constructor(private route: ActivatedRoute,
-              private robotService: RobotService) { }
+              private robotService: RobotService,
+              private location: Location) { }
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
@@ -45,6 +48,12 @@ export class UnityCreationComponent implements OnInit {
 
     this.robotService.createUnity(unity).subscribe(res => this.modelUnity = res);
     
+  }
+
+  goBack(): void {
+
+      this.location.back();
+  
   }
 
 }

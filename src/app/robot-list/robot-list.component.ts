@@ -27,32 +27,27 @@ export class RobotListComponent implements OnInit {
     
   }
 
-  /*onSubmit() {
-
-    //this.robotService.getRobots().subscribe(res => this.modelRobots = res);
-
-  }*/
-
-  gotoCreateUnity(robot: Robot) {
-
-    let link = ['/unityCreation', robot.name];
-    this.router.navigate(link);
-
-  }
-
   goBack(): void {
 
       this.location.back();
   
   }
 
+  confirmRemoveRobot(robot: Robot) {
+
+    robot.confirmRobot = true;
+
+  }
+
+  cancelRemoveRobot(robot: Robot) {
+    
+    robot.confirmRobot = false;
+    
+  }
+
   removeRobot(robot: Robot) {
 
     console.log(robot.name);
-
-    //let removeRobot: RemoveRobot = new RemoveRobot(robot.name);
-
-    //this.robotService.removeRobot(robot.name).subscribe(res => this.modelRobot = res);
 
     this.robotService.removeRobot(robot.name).subscribe(
         x => {
@@ -64,6 +59,13 @@ export class RobotListComponent implements OnInit {
               console.log('onCompleted')
               this.robotService.getRobots().subscribe(res => this.modelRobots = res)
               });
+
+  }
+
+  gotoRobotGet(robot: Robot) {
+
+    let link = ['/robotGet', robot.name];
+    this.router.navigate(link);
 
   }
 

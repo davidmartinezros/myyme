@@ -10,6 +10,8 @@ import { TagWrapper } from 'app/tag-wrapper';
 
 import { RobotService } from 'app/robot.service';
 
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-tag-creation',
   templateUrl: './tag-creation.component.html',
@@ -24,7 +26,8 @@ export class TagCreationComponent implements OnInit {
   tag: string;
 
   constructor(private route: ActivatedRoute,
-              private robotService: RobotService) { }
+              private robotService: RobotService,
+              private location: Location) { }
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
@@ -47,6 +50,12 @@ export class TagCreationComponent implements OnInit {
 
     this.robotService.createTag(tag).subscribe(res => this.modelUnity = res);
 
+  }
+
+  goBack(): void {
+
+      this.location.back();
+  
   }
 
 }

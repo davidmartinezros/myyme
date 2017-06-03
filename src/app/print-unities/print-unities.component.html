@@ -3,15 +3,22 @@
   <button (click)="gotoCreateUnity()">Afegir Unitat</button>
 
 
-  <div *ngIf="unities.length == 0" class="div">
+  <div *ngIf="modelUnities.length == 0" class="div">
     <div>No n'hi ha</div>
   </div>
 
-  <div *ngFor="let unity of unities" class="div">
+  <div *ngFor="let unity of modelUnities" class="div">
     <div>Id: {{unity.id}}</div>
     <div>Concepte: {{unity.concept}}</div>
     <div>Imatge: {{unity.image}}</div>
     <div>Descripció: {{unity.description}}</div>
+
+    <button (click)="confirmRemoveUnity(unity)">esborrar</button>
+    <div *ngIf="unity.confirmUnity" class="div">
+      <div>Desitja esborrar la unitat de coneixement {{unity.concept}}?</div>
+      <button (click)="removeUnity(unity)">Si</button>
+      <button (click)="cancelRemoveUnity(unity)">No</button>
+    </div>
     
     <div class="capcalera">
       <div>TAGS</div>
@@ -27,7 +34,7 @@
           <div>No n'hi ha</div>
       </div>
 
-      <app-print-unities [modelRobot]="modelRobot" [unities]="unity.unities"></app-print-unities>
+      <app-print-unities [modelRobot]="modelRobot" [modelUnities]="unity.unities"></app-print-unities>
 
     </div>
 

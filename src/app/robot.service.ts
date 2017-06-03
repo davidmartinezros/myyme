@@ -68,12 +68,11 @@ export class RobotService {
 
     // Remove an existing robot
     removeRobot (nameRobot: string): Observable<Robot> {
-        console.log(nameRobot);
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
-        return this.http.get(this.removeRobotUrl + "?name_robot=" + nameRobot)
+        return this.http.get(this.removeRobotUrl + "?name_robot=" + nameRobot, options)
                 // ...and calling .json() on the response to return data
                 .map((res:Response) => res.json()) 
                 // ... do 3 tries
@@ -126,14 +125,12 @@ export class RobotService {
     }
 
     // Remove an existing unity
-    removeUnity (body: Object): Observable<Unity> {
-        let bodyString = JSON.stringify(body); // Stringify payload
-        console.log(bodyString);
+    removeUnity (idRobot: string, concept: Object): Observable<Unity> {
         let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
-        return this.http.post(this.removeUnityUrl, body, options)
+        return this.http.get(this.removeUnityUrl + "?id_robot=" + idRobot + "&concept=" + concept, options)
                 // ...and calling .json() on the response to return data
                 .map((res:Response) => res.json())
                 // ... do 3 tries

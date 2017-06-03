@@ -5,6 +5,12 @@
   <div><b>Concepte:</b> {{unity.concept}}</div>
   <div><b>Imatge:</b> {{unity.image}}</div>
   <div><b>Descripció:</b> {{unity.description}}</div>
+  <button (click)="confirmRemoveUnity(unity)">esborrar</button>
+  <div *ngIf="unity.confirmUnity" class="div">
+    <div>Desitja esborrar la unitat de coneixement {{unity.concept}}?</div>
+    <button (click)="removeUnity(unity)">Si</button>
+    <button (click)="cancelRemoveUnity(unity)">No</button>
+  </div>
 </div>
 
 <button class="btn btn-alert" (click)="goBack()">Back</button>

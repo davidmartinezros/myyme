@@ -6,6 +6,8 @@ import { Unity } from '../unity';
 
 import { Robot } from '../robot';
 
+import { RobotService } from 'app/robot.service';
+
 @Component({
   selector: 'app-print-unities',
   templateUrl: './print-unities.component.html',
@@ -15,9 +17,12 @@ export class PrintUnitiesComponent implements OnInit {
 
   @Input() modelRobot: Robot;
 
-  @Input() unities: Unity[];
+  @Input() modelUnities: Unity[];
+
+  modelUnity: Unity;
   
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private robotService: RobotService) { }
 
   ngOnInit() {
 
@@ -35,9 +40,39 @@ export class PrintUnitiesComponent implements OnInit {
   gotoCreateTag(unity: Unity) {
 
     console.log(this.modelRobot);
+
+    console.log(unity);
     
     let link = ['/tagCreation', this.modelRobot.name, unity.concept];
     this.router.navigate(link);
+
+  }
+
+  confirmRemoveUnity(unity: Unity) {
+
+    unity.confirmUnity = true;
+  }
+
+  cancelRemoveUnity(unity: Unity) {
+    
+    unity.confirmUnity = false;
+
+  }
+
+  removeUnity(unity: Unity) {
+
+    console.log(unity.concept);
+
+    this.robotService.removeUnity(this.modelRobot.id, unity.concept).subscribe(
+        x => {
+              console.log('onNext: %s', x);
+              this.modelUnity = x;
+              },
+        e => console.log('onError: %s', e),
+        () => {
+              console.log('onCompleted')
+              this.robotService.getUnities().subscribe(res => this.modelUnities = res)
+              });
 
   }
 

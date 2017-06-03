@@ -1,9 +1,13 @@
+<div *ngIf="modelRobot && modelUnity">
+  <div>Creació de Tag de la Unitat de coneixement {{modelUnity.concept}} del Robot {{modelRobot.name}}</div>
+</div>
+
 <div class="row">
   <div class="col-xs-12">
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="name">Tag</label>
-        <input type="text" class="form-control" id="name" [(ngModel)]="tag" name="tag" required>
+        <input type="text" class="form-control" id="tag" [(ngModel)]="tag" name="tag" required>
       </div>
       <button type="submit" class="btn btn-success">Submit</button>
     </form>
@@ -25,3 +29,5 @@
 
   </div>
 </div>
+
+<button class="btn btn-alert" (click)="goBack()">Back</button>
