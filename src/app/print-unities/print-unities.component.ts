@@ -71,7 +71,7 @@ export class PrintUnitiesComponent implements OnInit {
         e => console.log('onError: %s', e),
         () => {
               console.log('onCompleted')
-              this.robotService.getUnities().subscribe(res => this.modelUnities = res)
+              this.robotService.getUnities(this.modelRobot.id).subscribe(res => this.modelUnities = res)
               });
 
   }

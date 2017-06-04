@@ -33,9 +33,9 @@ export class UnityCreationComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
-        let name = params['name'];
-        console.log(name);
-        this.robotService.getRobot(name)
+        let nameRobot = params['name_robot'];
+        console.log(nameRobot);
+        this.robotService.getRobot(nameRobot)
                 .subscribe(res => this.modelRobot = res);
     });
   }

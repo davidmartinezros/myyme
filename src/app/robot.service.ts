@@ -10,7 +10,7 @@ import { Unity } from './unity';
 export class RobotService {
     
     //private url = 'http://localhost:8080/how-do-you-learn/api/howdyl/';
-    private url = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.6.0-SNAPSHOT/api/howdyl/';
+    private url = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.7.0-SNAPSHOT/api/howdyl/';
 
     private listUnitiesUrl = this.url + 'listUnities';
     private addUnityUrl = this.url + 'createUnity';
@@ -82,9 +82,12 @@ export class RobotService {
     }
 
     // Fetch all existing unities
-    getUnities() : Observable<Unity[]>{
+    getUnities(idRobot: string) : Observable<Unity[]>{
+        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
          // ...using get request
-         return this.http.get(this.listUnitiesUrl)
+         return this.http.get(this.listUnitiesUrl + "/" + idRobot, options)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
             // ... do 3 tries
@@ -95,9 +98,12 @@ export class RobotService {
     }
 
     // Fetch all existing robot
-    getUnity(concept: string) : Observable<Unity>{
+    getUnity(idRobot: string, concept: string) : Observable<Unity>{
+        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
          // ...using get request
-         return this.http.get(this.getUnityUrl + "/" + concept)
+         return this.http.get(this.getUnityUrl + "/" + idRobot + "/" + concept, options)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
             // ... do 3 tries
@@ -110,7 +116,6 @@ export class RobotService {
     // Add a new unity
     createUnity (body: Object): Observable<Unity> {
         let bodyString = JSON.stringify(body); // Stringify payload
-        console.log(bodyString);
         let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
@@ -144,7 +149,6 @@ export class RobotService {
     // Add a new unity
     createTag (body: Object): Observable<Unity> {
         let bodyString = JSON.stringify(body); // Stringify payload
-        console.log(bodyString);
         let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 

@@ -35,20 +35,20 @@ export class TagCreationComponent implements OnInit {
         console.log(name);
         this.robotService.getRobot(name)
                 .subscribe(res => this.modelRobot = res);
-        let concept = params['concept']
+        let concept = params['concept'];
         console.log(concept);
-        this.robotService.getUnity(concept)
+        this.robotService.getUnity('AAA', concept)
                 .subscribe(res => this.modelUnity = res);
     });
   }
 
   onSubmit() {
 
-    let tag = new TagWrapper(this.modelRobot.id, this.modelUnity.concept, this.tag);
+    let tagWrapper = new TagWrapper(this.modelRobot.id, this.modelUnity.concept, this.tag);
 
-    console.log(tag);
+    console.log(tagWrapper);
 
-    this.robotService.createTag(tag).subscribe(res => this.modelUnity = res);
+    this.robotService.createTag(tagWrapper).subscribe(res => this.modelUnity = res);
 
   }
 

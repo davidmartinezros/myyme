@@ -26,7 +26,7 @@ export class UnityGetComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             this.concept = params['concept'];
             if(this.concept != '') {
-                this.robotService.getUnity(this.concept)
+                this.robotService.getUnity('AAA', this.concept)
                     .subscribe(res => this.modelUnity = res);
             }
         });
@@ -35,7 +35,7 @@ export class UnityGetComponent implements OnInit {
     searchUnity() {
         console.log(this.concept);
         if(this.concept != '') {
-            this.robotService.getUnity(this.concept)
+            this.robotService.getUnity('AAA', this.concept)
                     .subscribe(res => this.modelUnity = res);
         }
 

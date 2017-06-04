@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+
+import { ActivatedRoute, Params }   from '@angular/router';
   
 import { Unity } from 'app/unity';
 
@@ -12,18 +14,24 @@ import { RobotService } from 'app/robot.service';
 })
 export class UnitiesListComponent implements OnInit {
 
-  idRobot: string = '590ce4f99fd6656339e7b701';
+  idRobot: string;
 
   modelUnities: Unity[];
 
   modelUnity: Unity;
 
-  constructor(private robotService: RobotService,
+  constructor(private route: ActivatedRoute,
+              private robotService: RobotService,
               private location: Location) { }
 
   ngOnInit() {
-    
-    this.robotService.getUnities().subscribe(res => this.modelUnities = res);
+
+    this.route.params.forEach((params: Params) => {
+        this.idRobot = params['id_robot'];
+        console.log(this.idRobot);
+        this.robotService.getUnities(this.idRobot)
+          .subscribe(res => this.modelUnities = res);
+    });
 
   }
 
@@ -56,7 +64,7 @@ export class UnitiesListComponent implements OnInit {
         e => console.log('onError: %s', e),
         () => {
               console.log('onCompleted')
-              this.robotService.getUnities().subscribe(res => this.modelUnities = res)
+              this.robotService.getUnities(this.idRobot).subscribe(res => this.modelUnities = res)
               });
 
   }

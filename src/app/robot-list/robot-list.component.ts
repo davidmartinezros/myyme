@@ -69,4 +69,11 @@ export class RobotListComponent implements OnInit {
 
   }
 
+  gotoUnityGet(robot: Robot) {
+    
+    let link = ['/unitiesList', robot.id];
+    this.router.navigate(link);
+
+  }
+
 }

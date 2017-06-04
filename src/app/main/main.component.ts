@@ -27,18 +27,8 @@ export class MainComponent implements OnInit {
     this.router.navigate(link);
   }
 
-  llistarUnitats() {
-    let link = ['/unitiesList'];
-    this.router.navigate(link);
-  }
-
   getRobot() {
     let link = ['/robotGet',''];
-    this.router.navigate(link);
-  }
-
-  getUnitat() {
-    let link = ['/unityGet',''];
     this.router.navigate(link);
   }
 

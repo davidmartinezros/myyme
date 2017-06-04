@@ -6,13 +6,16 @@
   <div><b>Edat:</b> {{robot.age}}</div>
   <div><b>Professió:</b> {{robot.profession}}</div>
   <div><b>Descripció:</b> {{robot.description}}</div>
-  <button (click)="confirmRemoveRobot(robot)">esborrar</button>
-  <div *ngIf="robot.confirmRobot" class="div">
-    <div>Desitja esborrar el robot {{robot.name}}?</div>
-    <button (click)="removeRobot(robot)">Si</button>
-    <button (click)="cancelRemoveRobot(robot)">No</button>
+  <div class="div">
+    <button (click)="confirmRemoveRobot(robot)">esborrar</button>
+    <div *ngIf="robot.confirmRobot" class="div">
+      <div>Desitja esborrar el robot <b>{{robot.name}}</b>?</div>
+      <button (click)="removeRobot(robot)">Si</button>
+      <button (click)="cancelRemoveRobot(robot)">No</button>
+    </div>
+    <button (click)="gotoRobotGet(robot)">consultar robot</button>
+    <button (click)="gotoUnityGet(robot)">veure unitats de coneixement</button>
   </div>
-  <button (click)="gotoRobotGet(robot)">consultar robot</button>
 </div>
 
-<button class="btn btn-alert" (click)="goBack()">Back</button>
+<button (click)="goBack()">Back</button>
