@@ -6,6 +6,8 @@ import { Robot } from 'app/robot';
 
 import { Unity } from 'app/unity';
 
+import { Tag } from 'app/tag';
+
 import { TagWrapper } from 'app/tag-wrapper';
 
 import { RobotService } from 'app/robot.service';
@@ -34,17 +36,23 @@ export class TagCreationComponent implements OnInit {
         let name = params['name'];
         console.log(name);
         this.robotService.getRobot(name)
-                .subscribe(res => this.modelRobot = res);
-        let concept = params['concept'];
-        console.log(concept);
-        this.robotService.getUnity('AAA', concept)
-                .subscribe(res => this.modelUnity = res);
+          .subscribe(
+            x => {
+              console.log('onNext: %s', x);
+              this.modelRobot = x;
+            },
+            e => console.log('onError: %s', e),
+            () => {
+              console.log('onCompleted')
+              let concept = params['concept'];
+              this.robotService.getUnity(this.modelRobot.id, concept).subscribe(res => this.modelUnity = res)
+            });
     });
   }
 
   onSubmit() {
 
-    let tagWrapper = new TagWrapper(this.modelRobot.id, this.modelUnity.concept, this.tag);
+    let tagWrapper = new TagWrapper(this.modelRobot.id, this.modelUnity.concept, new Tag(null, this.tag));
 
     console.log(tagWrapper);
 

@@ -1,43 +1,95 @@
-<div class="capcalera">
-  <div>UNITATS</div>
-  <button (click)="gotoCreateUnity()">Afegir Unitat</button>
-
-
-  <div *ngIf="modelUnities.length == 0" class="div">
-    <div>No n'hi ha</div>
-  </div>
-
-  <div *ngFor="let unity of modelUnities" class="div">
-    <div>Id: {{unity.id}}</div>
-    <div>Concepte: {{unity.concept}}</div>
-    <div>Imatge: {{unity.image}}</div>
-    <div>Descripció: {{unity.description}}</div>
-
-    <button (click)="confirmRemoveUnity(unity)">esborrar</button>
-    <div *ngIf="unity.confirmUnity" class="div">
-      <div>Desitja esborrar la unitat de coneixement {{unity.concept}}?</div>
-      <button (click)="removeUnity(unity)">Si</button>
-      <button (click)="cancelRemoveUnity(unity)">No</button>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-10">
+        <div class="capcalera">UNITATS</div>
+      </div>
+      <div class="col-xs-2 text-right">
+        <button (click)="gotoCreateUnity()">+</button>
+      </div>
     </div>
-    
-    <div class="capcalera">
-      <div>TAGS</div>
-      <button (click)="gotoCreateTag(unity)">Afegir Tag</button>
 
-      <div *ngIf="unity.tags.length > 0">
-        <div *ngFor="let tag of unity.tags" class="div">
-          <div>{{tag}}</div>
+    <div *ngIf="modelUnities.length == 0" class="row">
+      <div class="col-xs-12">
+        <div class="div">No n'hi ha</div>
+      </div>
+    </div>
+
+    
+    <div class="row">
+      <div class="col-xs-12">
+        <div *ngFor="let unity of modelUnities" class="div">
+
+          <div class="row">
+            <div class="col-xs-10">
+          
+              <div>Id: {{unity.id}}</div>
+              <div>Concepte: {{unity.concept}}</div>
+              <div>Imatge: {{unity.image}}</div>
+              <div>Descripció: {{unity.description}}</div>
+            </div>
+
+            <div class="col-xs-2 text-right">
+              <button (click)="confirmRemoveUnity(unity)">x</button>
+            </div>
+
+            <div class="col-xs-12">
+              <div *ngIf="unity.confirmUnity" class="div">
+                <div>Desitja esborrar la unitat de coneixement {{unity.concept}}?</div>
+                <button (click)="removeUnity(unity)">Si</button>
+                <button (click)="cancelRemoveUnity(unity)">No</button>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-xs-10">
+              <div class="capcalera">TAGS</div>
+            </div>
+            <div class="col-xs-2 text-right">
+              <button (click)="gotoCreateTag(unity)">+</button>
+            </div>
+          </div>
+
+          <div *ngIf="unity.tags.length > 0">
+            <div class="row">
+              <div class="col-xs-12">
+                <div *ngFor="let tag of unity.tags">
+                  <div class="row">
+                    <div class="col-xs-10">
+                      <div class="div">{{tag.id}}:{{tag.tag}}</div>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-2 text-right">
+                    <button (click)="confirmRemoveTag(tag)">x</button>
+                  </div>
+
+                  <div class="col-xs-12">
+                    <div *ngIf="tag.confirmTag" class="div">
+                      <div>Desitja esborrar el tag {{tag.tag}}?</div>
+                      <button (click)="removeTag(unity, tag)">Si</button>
+                      <button (click)="cancelRemoveTag(tag)">No</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="unity.tags.length == 0">
+            <div class="row">
+              <div class="col-xs-12">
+                  <div class="div">No n'hi ha</div>
+              </div>
+            </div>
+          </div>
+
+          <app-print-unities [modelRobot]="modelRobot" [modelUnities]="unity.unities"></app-print-unities>
+          
         </div>
       </div>
-
-      <div *ngIf="unity.tags.length == 0" class="div">
-          <div>No n'hi ha</div>
-      </div>
-
-      <app-print-unities [modelRobot]="modelRobot" [modelUnities]="unity.unities"></app-print-unities>
-
     </div>
-
   </div>
-
 </div>

@@ -1,3 +1,5 @@
+import { Tag } from './tag';
+
 export class Unity {
 
     public confirmUnity: boolean;
@@ -7,7 +9,7 @@ export class Unity {
     public concept: string,
     public image: any,
     public description?: string,
-    public tags?: string[],
+    public tags?: Tag[],
     public unities?: Unity[]
   ) {
     this.confirmUnity = false;

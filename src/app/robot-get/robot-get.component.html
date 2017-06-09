@@ -1,21 +1,34 @@
-<div>Aquest és el robot</div>
-<form (ngSubmit)="searchRobot()">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" required>
-    </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-    <button type="reset" class="btn btn-info">Reset</button>
-</form>
-<div *ngIf="modelRobot" class="div">
-  <div class="capcalera"><b>Id:</b> {{modelRobot.id}}</div>
-  <div><b>Nom:</b> {{modelRobot.name}}</div>
-  <div><b>Edat:</b> {{modelRobot.age}}</div>
-  <div><b>Professió:</b> {{modelRobot.profession}}</div>
-  <div><b>Descripció:</b> {{modelRobot.description}}</div>
-
-  <app-print-unities [modelRobot]="modelRobot" [modelUnities]="modelRobot.unities"></app-print-unities>
-
+<div class="row">
+  <div class="col-xs-12">
+    <div>Aquest és el robot</div>
+  </div>
 </div>
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="searchRobot()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" required>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="reset" class="btn btn-info">Reset</button>
+    </form>
+    <div *ngIf="modelRobot" class="row div">
+      <div class="col-xs-12">
+        <div class="capcalera"><b>Id:</b> {{modelRobot.id}}</div>
+        <div><b>Nom:</b> {{modelRobot.name}}</div>
+        <div><b>Edat:</b> {{modelRobot.age}}</div>
+        <div><b>Professió:</b> {{modelRobot.profession}}</div>
+        <div><b>Descripció:</b> {{modelRobot.description}}</div>
 
-<button class="btn btn-alert" (click)="goBack()">Back</button>
+        <app-print-unities [modelRobot]="modelRobot" [modelUnities]="modelRobot.unities"></app-print-unities>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-alert" (click)="goBack()">Back</button>
+  </div>
+</div>

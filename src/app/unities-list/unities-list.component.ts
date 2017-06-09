@@ -56,7 +56,7 @@ export class UnitiesListComponent implements OnInit {
 
     console.log(unity.concept);
 
-    this.robotService.removeUnity(this.idRobot, unity.concept).subscribe(
+    this.robotService.removeUnity(unity.id).subscribe(
         x => {
               console.log('onNext: %s', x);
               this.modelUnity = x;

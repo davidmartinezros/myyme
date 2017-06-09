@@ -6,6 +6,8 @@ import { Unity } from '../unity';
 
 import { Robot } from '../robot';
 
+import { Tag } from '../tag';
+
 import { RobotService } from 'app/robot.service';
 
 @Component({
@@ -20,12 +22,16 @@ export class PrintUnitiesComponent implements OnInit {
   @Input() modelUnities: Unity[];
 
   modelUnity: Unity;
+
+  modelTag: Tag;
+
+  resposta: Boolean;
   
   constructor(private router: Router,
     private robotService: RobotService) { }
 
   ngOnInit() {
-
+    console.log(this.modelUnities);
   }
 
   gotoCreateUnity() {
@@ -51,6 +57,7 @@ export class PrintUnitiesComponent implements OnInit {
   confirmRemoveUnity(unity: Unity) {
 
     unity.confirmUnity = true;
+
   }
 
   cancelRemoveUnity(unity: Unity) {
@@ -63,10 +70,38 @@ export class PrintUnitiesComponent implements OnInit {
 
     console.log(unity.concept);
 
-    this.robotService.removeUnity(this.modelRobot.id, unity.concept).subscribe(
+    this.robotService.removeUnity(unity.id).subscribe(
         x => {
               console.log('onNext: %s', x);
               this.modelUnity = x;
+              },
+        e => console.log('onError: %s', e),
+        () => {
+          console.log('onCompleted')
+          this.robotService.getUnities(this.modelRobot.id).subscribe(res => this.modelUnities = res)
+        });
+  }
+
+  confirmRemoveTag(tag: Tag) {
+
+    tag.confirmTag = true;
+
+  }
+
+  cancelRemoveTag(tag: Tag) {
+
+    tag.confirmTag = false;
+    
+  }
+
+  removeTag(unity: Unity, tag: Tag) {
+
+    console.log(tag.tag);
+
+    this.robotService.removeTag(tag.id).subscribe(
+        x => {
+              console.log('onNext: %s', x);
+              this.modelTag = x;
               },
         e => console.log('onError: %s', e),
         () => {

@@ -6,11 +6,13 @@ import { Robot } from './robot';
 
 import { Unity } from './unity';
 
+import { Tag } from './tag';
+
 @Injectable()
 export class RobotService {
     
-    //private url = 'http://localhost:8080/how-do-you-learn/api/howdyl/';
-    private url = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.7.0-SNAPSHOT/api/howdyl/';
+    private url = 'http://localhost:8080/how-do-you-learn/api/howdyl/';
+    //private url = 'http://davidmartinezros.com:8080/how-do-you-learn-SB-2.8.0-SNAPSHOT/api/howdyl/';
 
     private listUnitiesUrl = this.url + 'listUnities';
     private addUnityUrl = this.url + 'createUnity';
@@ -21,6 +23,7 @@ export class RobotService {
     private getRobotUrl = this.url + 'robot';
     private removeRobotUrl = this.url + 'removeRobot';
     private addTagUrl = this.url + 'createTag';
+    private removeTagUrl = this.url + 'removeTag';
 
     constructor(private http: Http) { }
 
@@ -130,12 +133,12 @@ export class RobotService {
     }
 
     // Remove an existing unity
-    removeUnity (idRobot: string, concept: Object): Observable<Unity> {
+    removeUnity (idUnity: string): Observable<Unity> {
         let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
-        return this.http.get(this.removeUnityUrl + "?id_robot=" + idRobot + "&concept=" + concept, options)
+        return this.http.get(this.removeUnityUrl + "?id_unity=" + idUnity, options)
                 // ...and calling .json() on the response to return data
                 .map((res:Response) => res.json())
                 // ... do 3 tries
@@ -143,8 +146,6 @@ export class RobotService {
                 //...errors if any
                 .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
-
-    //{{url}}/api/howdyl/createTag?idRobot=590cbd5f9fd66563396d03bc&concept=prova&tag=exemple2
 
     // Add a new unity
     createTag (body: Object): Observable<Unity> {
@@ -154,6 +155,21 @@ export class RobotService {
 
         // ...using post request
         return this.http.post(this.addTagUrl, body, options)
+                // ...and calling .json() on the response to return data
+                .map((res:Response) => res.json())
+                // ... do 3 tries
+                .retry(3)
+                //...errors if any
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    // Remove an existing tag
+    removeTag (idTag: string): Observable<Tag> {
+        let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
+        // ...using post request
+        return this.http.get(this.removeTagUrl + "?id_tag=" + idTag, options)
                 // ...and calling .json() on the response to return data
                 .map((res:Response) => res.json())
                 // ... do 3 tries
