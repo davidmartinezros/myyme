@@ -19,26 +19,42 @@ export class PrintUnitiesComponent implements OnInit {
 
   @Input() modelRobot: Robot;
 
-  @Input() modelUnities: Unity[];
+  @Input() modelUnity: Unity;
 
-  modelUnity: Unity;
+  @Input() unitiesFirstLevel: boolean;
+
+  modelUnities: Unity[];
 
   modelTag: Tag;
-
-  resposta: Boolean;
   
   constructor(private router: Router,
     private robotService: RobotService) { }
 
   ngOnInit() {
-    console.log(this.modelUnities);
+    console.log(this.modelUnity);
+    if(this.unitiesFirstLevel && this.modelUnity == null) {
+      this.modelUnities = this.modelRobot.unities;
+    } else {
+      this.modelUnities = this.modelUnity.unities;
+    }
   }
 
   gotoCreateUnity() {
 
     console.log(this.modelRobot);
     
-    let link = ['/unityCreation', this.modelRobot.name];
+    let link = ['/unityCreation', this.modelRobot.id];
+    this.router.navigate(link);
+
+  }
+
+  gotoCreateUnityRelation(unity: Unity){
+
+    console.log(this.modelRobot);
+
+    console.log(unity);
+    
+    let link = ['/unityRelationCreation', this.modelRobot.id, unity.id];
     this.router.navigate(link);
 
   }
@@ -49,7 +65,7 @@ export class PrintUnitiesComponent implements OnInit {
 
     console.log(unity);
     
-    let link = ['/tagCreation', this.modelRobot.name, unity.concept];
+    let link = ['/tagCreation', this.modelRobot.id, unity.id];
     this.router.navigate(link);
 
   }

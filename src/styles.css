@@ -129,6 +129,7 @@ nav a:hover, nav a:active {
   filter:alpha(opacity=100); /* For IE8 and earlier */
 }
 ul li {
+    padding-top: 10px;
     list-style-type: circle;
 }
 mouseCursor:hover {

@@ -1,0 +1,48 @@
+<div *ngIf="modelRobot && modelUnity">
+  <div>Creació de Relació de la Unitat de coneixement {{modelUnity.concept}} del Robot {{modelRobot.name}}</div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Concepte</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="concept" name="concept" required>
+      </div>
+      <div class="form-group">
+        <label for="profession">Imatge</label>
+        <input type="text" class="form-control" id="profession" [(ngModel)]="image" name="image" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Descripció</label>
+        <input type="text" class="form-control" id="description" [(ngModel)]="description" name="description">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+    <div *ngIf="modelRobot" class="div">
+      <div>Id: {{modelRobot.id}}</div>
+      <div>Nom: {{modelRobot.name}}</div>
+      <div>Edat: {{modelRobot.age}}</div>
+      <div>Professió: {{modelRobot.profession}}</div>
+      <div>Descripció: {{modelRobot.description}}</div>
+    </div>
+
+    <div *ngIf="modelUnity" class="div">
+      <div>{{modelUnity.id}}</div>
+      <div>{{modelUnity.concept}}</div>
+      <div>{{modelUnity.image}}</div>
+      <div>{{modelUnity.description}}</div>
+    </div>
+
+    <div *ngIf="modelRelationUnity" class="div">
+      <div>{{modelRelationUnity.id}}</div>
+      <div>{{modelRelationUnity.concept}}</div>
+      <div>{{modelRelationUnity.image}}</div>
+      <div>{{modelRelationUnity.description}}</div>
+    </div>
+
+  </div>
+</div>
+
+<button class="btn btn-alert" (click)="goBack()">Back</button>

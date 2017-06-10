@@ -16,14 +16,17 @@ export class RobotService {
 
     private listUnitiesUrl = this.url + 'listUnities';
     private addUnityUrl = this.url + 'createUnity';
+    private getUnityByConceptUrl = this.url + 'unityByConcept';
     private getUnityUrl = this.url + 'unity';
     private removeUnityUrl = this.url + 'removeUnity';
     private listRobotsUrl = this.url + 'listRobots';
     private addRobotUrl = this.url + 'createRobot';
+    private getRobotByNameUrl = this.url + 'robotByName';
     private getRobotUrl = this.url + 'robot';
     private removeRobotUrl = this.url + 'removeRobot';
     private addTagUrl = this.url + 'createTag';
     private removeTagUrl = this.url + 'removeTag';
+    private addUnityRelationUrl = this.url + 'createRelation';
 
     constructor(private http: Http) { }
 
@@ -41,9 +44,22 @@ export class RobotService {
     }
 
     // Fetch all existing robot
-    getRobot(name: string) : Observable<Robot>{
+    getRobotByName(name: string) : Observable<Robot>{
          // ...using get request
-         return this.http.get(this.getRobotUrl + "/" + name)
+         return this.http.get(this.getRobotByNameUrl + "/" + name)
+            // ...and calling .json() on the response to return data
+            .map((res:Response) => res.json())
+            // ... do 3 tries
+            .retry(3)
+            //...errors if any
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        
+    }
+
+    // Fetch all existing robot
+    getRobot(idRobot: string) : Observable<Robot>{
+         // ...using get request
+         return this.http.get(this.getRobotUrl + "/" + idRobot)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
             // ... do 3 tries
@@ -55,7 +71,6 @@ export class RobotService {
 
     // Add a new robot
     createRobot (body: Object): Observable<Robot> {
-        let bodyString = JSON.stringify(body); // Stringify payload
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
@@ -70,12 +85,12 @@ export class RobotService {
     }
 
     // Remove an existing robot
-    removeRobot (nameRobot: string): Observable<Robot> {
+    removeRobot (idRobot: string): Observable<Robot> {
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
-        return this.http.get(this.removeRobotUrl + "?name_robot=" + nameRobot, options)
+        return this.http.get(this.removeRobotUrl + "?id_robot=" + idRobot, options)
                 // ...and calling .json() on the response to return data
                 .map((res:Response) => res.json()) 
                 // ... do 3 tries
@@ -101,12 +116,28 @@ export class RobotService {
     }
 
     // Fetch all existing robot
-    getUnity(idRobot: string, concept: string) : Observable<Unity>{
+    getUnityByConcept(idRobot: string, concept: string) : Observable<Unity>{
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
          // ...using get request
-         return this.http.get(this.getUnityUrl + "/" + idRobot + "/" + concept, options)
+         return this.http.get(this.getUnityByConceptUrl + "/" + idRobot + "/" + concept, options)
+            // ...and calling .json() on the response to return data
+            .map((res:Response) => res.json())
+            // ... do 3 tries
+            .retry(3)
+            //...errors if any
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        
+    }
+
+    // Fetch all existing robot
+    getUnity(idRobot: string, idUnity: string) : Observable<Unity>{
+        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
+         // ...using get request
+         return this.http.get(this.getUnityUrl + "/" + idRobot + "/" + idUnity, options)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
             // ... do 3 tries
@@ -118,7 +149,6 @@ export class RobotService {
 
     // Add a new unity
     createUnity (body: Object): Observable<Unity> {
-        let bodyString = JSON.stringify(body); // Stringify payload
         let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
@@ -148,8 +178,7 @@ export class RobotService {
     }
 
     // Add a new unity
-    createTag (body: Object): Observable<Unity> {
-        let bodyString = JSON.stringify(body); // Stringify payload
+    createTag (body: Object): Observable<Tag> {
         let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
@@ -170,6 +199,21 @@ export class RobotService {
 
         // ...using post request
         return this.http.get(this.removeTagUrl + "?id_tag=" + idTag, options)
+                // ...and calling .json() on the response to return data
+                .map((res:Response) => res.json())
+                // ... do 3 tries
+                .retry(3)
+                //...errors if any
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    // Add a new unity
+    createRelation (body: Object): Observable<Unity> {
+        let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
+        // ...using post request
+        return this.http.post(this.addUnityRelationUrl, body, options)
                 // ...and calling .json() on the response to return data
                 .map((res:Response) => res.json())
                 // ... do 3 tries

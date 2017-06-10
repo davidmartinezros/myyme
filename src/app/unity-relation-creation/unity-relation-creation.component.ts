@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Params }   from '@angular/router';
 
@@ -6,28 +6,28 @@ import { Robot } from 'app/robot';
 
 import { Unity } from 'app/unity';
 
-import { Tag } from 'app/tag';
-
-import { TagWrapper } from 'app/tag-wrapper';
+import { UnityRelationWrapper } from 'app/unity-relation-wrapper';
 
 import { RobotService } from 'app/robot.service';
 
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-tag-creation',
-  templateUrl: './tag-creation.component.html',
-  styleUrls: ['./tag-creation.component.css']
+  selector: 'app-unity-relation-creation',
+  templateUrl: './unity-relation-creation.component.html',
+  styleUrls: ['./unity-relation-creation.component.css']
 })
-export class TagCreationComponent implements OnInit {
+export class UnityRelationCreationComponent implements OnInit {
+
+  concept: string;
+  image: string;
+  description: string;
 
   modelRobot: Robot;
 
   modelUnity: Unity;
 
-  modelTag: Tag;
-
-  tag: string;
+  modelRelationUnity: Unity;
 
   constructor(private route: ActivatedRoute,
               private robotService: RobotService,
@@ -36,7 +36,7 @@ export class TagCreationComponent implements OnInit {
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
         let idRobot = params['id_robot'];
-        console.log(idRobot);
+        console.log(name);
         this.robotService.getRobot(idRobot)
           .subscribe(
             x => {
@@ -54,12 +54,16 @@ export class TagCreationComponent implements OnInit {
 
   onSubmit() {
 
-    let tagWrapper = new TagWrapper(this.modelRobot.id, this.modelUnity.id, new Tag(null, this.tag));
+    console.log(this.modelRobot);
+    
+    console.log(this.modelUnity);
 
-    console.log(tagWrapper);
+    let unityRelation = new UnityRelationWrapper(this.modelRobot.id, this.modelUnity.id, new Unity(null, this.concept, this.image, this.description));
 
-    this.robotService.createTag(tagWrapper).subscribe(res => this.modelTag = res);
+    console.log(unityRelation);
 
+    this.robotService.createRelation(unityRelation).subscribe(res => this.modelRelationUnity = res);
+    
   }
 
   goBack(): void {

@@ -23,7 +23,7 @@ export class UnityCreationComponent implements OnInit {
   image: string;
   description: string;
 
-  @Input() modelRobot: Robot;
+  modelRobot: Robot;
 
   modelUnity: Unity;
 
@@ -33,9 +33,9 @@ export class UnityCreationComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
-        let nameRobot = params['name_robot'];
-        console.log(nameRobot);
-        this.robotService.getRobot(nameRobot)
+        let idRobot = params['id_robot'];
+        console.log(idRobot);
+        this.robotService.getRobot(idRobot)
                 .subscribe(res => this.modelRobot = res);
     });
   }

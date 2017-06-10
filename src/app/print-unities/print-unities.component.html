@@ -5,7 +5,8 @@
         <div class="capcalera">UNITATS</div>
       </div>
       <div class="col-xs-2 text-right">
-        <button (click)="gotoCreateUnity()">+</button>
+        <button *ngIf="unitiesFirstLevel" (click)="gotoCreateUnity()">+</button>
+        <button *ngIf="!unitiesFirstLevel" (click)="gotoCreateUnityRelation(modelUnity)">+</button>
       </div>
     </div>
 
@@ -86,7 +87,7 @@
             </div>
           </div>
 
-          <app-print-unities [modelRobot]="modelRobot" [modelUnities]="unity.unities"></app-print-unities>
+          <app-print-unities [modelRobot]="modelRobot" [modelUnity]="unity" [unitiesFirstLevel]="false"></app-print-unities>
           
         </div>
       </div>

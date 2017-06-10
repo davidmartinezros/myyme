@@ -47,9 +47,9 @@ export class RobotListComponent implements OnInit {
 
   removeRobot(robot: Robot) {
 
-    console.log(robot.name);
+    console.log(robot.id);
 
-    this.robotService.removeRobot(robot.name).subscribe(
+    this.robotService.removeRobot(robot.id).subscribe(
         x => {
               console.log('onNext: %s', x);
               this.modelRobot = x;
@@ -69,7 +69,7 @@ export class RobotListComponent implements OnInit {
 
   }
 
-  gotoUnityGet(robot: Robot) {
+  gotoUnitiesList(robot: Robot) {
     
     let link = ['/unitiesList', robot.id];
     this.router.navigate(link);

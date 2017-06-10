@@ -4,7 +4,7 @@ export class TagWrapper {
 
     constructor(
         public idRobot: string,
-        public concept: string,
+        public idUnity: string,
         public tag: Tag) {
 
         }

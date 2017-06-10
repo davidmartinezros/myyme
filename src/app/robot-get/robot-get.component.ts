@@ -15,7 +15,7 @@ export class RobotGetComponent implements OnInit {
 
     modelRobot: Robot;
 
-    name: string;
+    nameRobot: string;
 
     constructor(private robotService: RobotService,
         private route: ActivatedRoute,
@@ -24,9 +24,9 @@ export class RobotGetComponent implements OnInit {
     ngOnInit(): void {
 
         this.route.params.forEach((params: Params) => {
-            this.name = params['name'];
-            if(this.name != '') {
-                this.robotService.getRobot(this.name)
+            this.nameRobot = params['name_robot'];
+            if(this.nameRobot != '') {
+                this.robotService.getRobotByName(this.nameRobot)
                     .subscribe(res => this.modelRobot = res);
             }
         });
@@ -34,9 +34,9 @@ export class RobotGetComponent implements OnInit {
     }
 
     searchRobot() {
-        console.log(this.name);
-        if(this.name != '') {
-            this.robotService.getRobot(this.name)
+        console.log(this.nameRobot);
+        if(this.nameRobot != '') {
+            this.robotService.getRobot(this.nameRobot)
                     .subscribe(res => this.modelRobot = res);
         }
 
