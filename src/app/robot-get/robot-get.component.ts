@@ -36,7 +36,7 @@ export class RobotGetComponent implements OnInit {
     searchRobot() {
         console.log(this.nameRobot);
         if(this.nameRobot != '') {
-            this.robotService.getRobot(this.nameRobot)
+            this.robotService.getRobotByName(this.nameRobot)
                     .subscribe(res => this.modelRobot = res);
         }
 
