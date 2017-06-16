@@ -1,41 +1,39 @@
-<div (onmousemove)="mousemove($event)">
-  <div class="row">
-    <div class="col-xs-12">
-      <div align="center" class="row">
+<div class="row">
+  <div class="col-xs-12">
+    <div align="center" class="row">
 
-        <div class="div col-xs-12">
-          <p>Hola!</p>
-          <p><b>Sóc el que tu vulguis que sigui!</b></p>
-          <p>Estic fet amb la nova tecnologia d'aprenentatge amb <b>inteligència artificial</b> <i>howdyl versió 2.4.0-SNAPSHOT</i>.</p>
-          <button (click)="goRobotCreation()">Crea'm i invita'm a la teva vida!</button>
-        </div>
+      <div class="div col-xs-12">
+        <p>Hola!</p>
+        <p><b>Sóc el que tu vulguis que sigui!</b></p>
+        <p>Estic fet amb la nova tecnologia d'aprenentatge amb <b>inteligència artificial</b> <i>howdyl versió 2.4.0-SNAPSHOT</i>.</p>
+        <button (click)="goRobotCreation()">Crea'm i invita'm a la teva vida!</button>
       </div>
-      <div class="row">
-
-        <div class="div col-xs-12">
-          <div class="capcalera"><b>Coses que puc fer?</b></div>
-          <ul>
-            <li><span class="tema">Estudiar tema (input)</span></li>
-            <li><span class="tema">Explicar-te un tema conegut (output)</span></li>
-            <li><span class="tema">Proposar temes d'interés (output)</span></li>
-            <li><span class="tema">Explicar anécdota del dia (output)</span></li>
-          </ul>
-        </div>
-        
-      </div>
-
-      <div class="row">
-
-        <div class="div col-xs-12">
-          <div class="capcalera"><b>Generació manual</b></div>
-          <ul>
-            <li><span class="tema" (click)="llistarRobots()">Llistar robots</span></li>
-            <li><span class="tema" (click)="getRobot()">Consultar robot</span></li>
-          </ul>
-        </div>
-        
-      </div>
-
     </div>
+    <div class="row">
+
+      <div class="div col-xs-12">
+        <div class="capcalera"><b>Coses que puc fer?</b></div>
+        <ul>
+          <li><span class="tema">Estudiar tema (input)</span></li>
+          <li><span class="tema">Explicar-te un tema conegut (output)</span></li>
+          <li><span class="tema">Proposar temes d'interés (output)</span></li>
+          <li><span class="tema">Explicar anécdota del dia (output)</span></li>
+        </ul>
+      </div>
+      
+    </div>
+
+    <div class="row">
+
+      <div class="div col-xs-12">
+        <div class="capcalera"><b>Generació manual</b></div>
+        <ul>
+          <li><span class="tema" (click)="llistarRobots()">Llistar robots</span></li>
+          <li><span class="tema" (click)="getRobot()">Consultar robot</span></li>
+        </ul>
+      </div>
+      
+    </div>
+
   </div>
 </div>
