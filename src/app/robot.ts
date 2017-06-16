@@ -4,6 +4,8 @@ export class Robot {
 
   public confirmRobot: boolean;
 
+  public queDiuElRobot: string = "Carregant...";
+
     constructor(
     public id: string,  
     public name: string,
@@ -13,6 +15,7 @@ export class Robot {
     public unities?: Unity[]
   ) {
     this.confirmRobot = false;
+    this.queDiuElRobot = "Carregat!";
   }
 
 }

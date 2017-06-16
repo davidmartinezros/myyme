@@ -22,6 +22,35 @@
                 <div class="pensament3"></div>
             </div>
         </div>
+        <div *ngIf="modelRobot">
+            <div class="row">
+                <div class="col-xs-12" style="height: 200px">
+                </div>
+            </div>
+            <div class="row">
+                <div class="div col-xs-12">
+                    <div class="capcalera">
+                        <b>Sóc {{modelRobot.name}}! Què vols que t'expliqui?</b>
+                    </div>
+                    <div class="div" style="height: 300px">
+                        {{modelRobot.queDiuElRobot}}
+                    </div>
+                    <form (ngSubmit)="digamAlgo()">
+                        <div class="form-group">
+                            <div class="col-xs-7">
+                                <input type="text" class="form-control" id="algo" [(ngModel)]="algo" name="algo" required>
+                            </div>
+                            <div class="col-xs-3">
+                                <button type="submit" class="btn btn-success">Diga'm algo!</button>
+                            </div>
+                            <div class="col-xs-2">
+                                <button type="reset" class="btn btn-info">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div align="center" class="col-xs-4">

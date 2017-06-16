@@ -1,5 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 
+import { RobotService} from './robot.service';
+
+import { Robot } from './robot';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +11,14 @@ import { Component, OnInit, HostListener } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  constructor() {
-  
+  algo: string;
+
+  modelRobot: Robot;
+
+  constructor(private robotService: RobotService) {
+    // Hem de carregar el robot que seleccioni lusuari
+    //this.robotService.getRobotByName("David")
+    //                .subscribe(res => this.modelRobot = res);
   }
 
   horizontal = {
@@ -59,6 +68,16 @@ export class AppComponent implements OnInit {
     //console.log('move_fi');
     //console.log($pupille.style.left);
     //console.log($pupille.style.top);
+  }
+
+  digamAlgo() {
+
+    if(this.modelRobot) {
+
+      this.modelRobot.queDiuElRobot += "\n" + this.algo;
+
+    }
+
   }
 
 }

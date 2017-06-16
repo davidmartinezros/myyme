@@ -1,5 +1,6 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
 import { MainComponent }   from '../main/main.component';
 import { RobotCreationComponent }   from '../robot-creation/robot-creation.component';
 import { RobotGetComponent }   from '../robot-get/robot-get.component';
@@ -11,7 +12,8 @@ import { TagCreationComponent } from '../tag-creation/tag-creation.component';
 import { UnityRelationCreationComponent } from '../unity-relation-creation/unity-relation-creation.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/into', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'into', component: MainComponent },
   { path: 'robotCreation', component: RobotCreationComponent },
   { path: 'robotGet/:name_robot', component: RobotGetComponent },
