@@ -17,6 +17,7 @@ import { UnityGetComponent } from './unity-get/unity-get.component';
 import { TagCreationComponent } from './tag-creation/tag-creation.component';
 import { UnityRelationCreationComponent } from './unity-relation-creation/unity-relation-creation.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { LoginComponent } from './login/login.component';
     UnityGetComponent,
     TagCreationComponent,
     UnityRelationCreationComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
