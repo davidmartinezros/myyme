@@ -8,6 +8,8 @@ import { Unity } from 'app/unity';
 
 import { Tag } from 'app/tag';
 
+import { User } from 'app/user';
+
 import { TagWrapper } from 'app/tag-wrapper';
 
 import { RobotService } from 'app/robot.service';
@@ -20,6 +22,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./tag-creation.component.css']
 })
 export class TagCreationComponent implements OnInit {
+
+  modelUser: User;
 
   modelRobot: Robot;
 
@@ -54,7 +58,7 @@ export class TagCreationComponent implements OnInit {
 
   onSubmit() {
 
-    let tagWrapper = new TagWrapper(this.modelRobot.id, this.modelUnity.id, new Tag(null, this.tag));
+    let tagWrapper = new TagWrapper(this.modelUser.id, this.modelRobot.id, this.modelUnity.id, new Tag(null, this.tag));
 
     console.log(tagWrapper);
 

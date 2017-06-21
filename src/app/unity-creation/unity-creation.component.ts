@@ -6,6 +6,8 @@ import { Robot } from 'app/robot';
 
 import { Unity } from 'app/unity';
 
+import { User } from 'app/user';
+
 import { UnityWrapper } from 'app/unity-wrapper';
 
 import { RobotService } from 'app/robot.service';
@@ -22,6 +24,8 @@ export class UnityCreationComponent implements OnInit {
   concept: string;
   image: string;
   description: string;
+
+  modelUser: User;
 
   modelRobot: Robot;
 
@@ -42,7 +46,7 @@ export class UnityCreationComponent implements OnInit {
 
   onSubmit() {
 
-    let unity = new UnityWrapper(this.modelRobot.id, new Unity(null, this.concept, this.image, this.description));
+    let unity = new UnityWrapper(this.modelUser.id, this.modelRobot.id, new Unity(null, this.concept, this.image, this.description));
 
     console.log(unity);
 

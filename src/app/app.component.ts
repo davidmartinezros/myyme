@@ -17,8 +17,8 @@ export class AppComponent implements OnInit {
 
   constructor(private robotService: RobotService) {
     // Hem de carregar el robot que seleccioni lusuari
-    //this.robotService.getRobotByName("David")
-    //                .subscribe(res => this.modelRobot = res);
+    this.robotService.getRobotByName("David")
+                    .subscribe(res => this.modelRobot = res);
   }
 
   horizontal = {

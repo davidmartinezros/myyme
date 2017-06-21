@@ -8,6 +8,8 @@ import { Unity } from './unity';
 
 import { Tag } from './tag';
 
+import { User } from './user';
+
 @Injectable()
 export class RobotService {
     
@@ -27,8 +29,84 @@ export class RobotService {
     private addTagUrl = this.url + 'createTag';
     private removeTagUrl = this.url + 'removeTag';
     private addUnityRelationUrl = this.url + 'createRelation';
+    //private validateUserUrl = this.url + 'validateUser';
+    private addUserUrl = this.url + 'createUser';
+    private getUserUrl = this.url + 'user';
+    private getUserByNickUrl = this.url + 'userByNick';
+    private removeUserUrl = this.url + 'removeUser';
 
     constructor(private http: Http) { }
+/*
+    validateUser(body: Object) : Observable<Boolean>{
+        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
+        // ...using post request
+        return this.http.post(this.validateUserUrl, body, options)
+                // ...and calling .json() on the response to return data
+                .map((res:Response) => res.json()) 
+                // ... do 3 tries
+                .retry(3)
+                //...errors if any
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        
+    }
+*/
+
+    // Fetch all existing robot
+    getUserByNick(nick: string) : Observable<Robot>{
+         // ...using get request
+         return this.http.get(this.getUserByNickUrl + "/" + nick)
+            // ...and calling .json() on the response to return data
+            .map((res:Response) => res.json())
+            // ... do 3 tries
+            .retry(3)
+            //...errors if any
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        
+    }
+
+    getUser(idUser: string) : Observable<User>{
+       // ...using get request
+         return this.http.get(this.getUserUrl + "/" + idUser)
+            // ...and calling .json() on the response to return data
+            .map((res:Response) => res.json())
+            // ... do 3 tries
+            .retry(3)
+            //...errors if any
+            .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        
+    }
+
+    // Add a new robot
+    createUser (body: Object): Observable<User> {
+        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
+        // ...using post request
+        return this.http.post(this.addUserUrl, body, options)
+                // ...and calling .json() on the response to return data
+                .map((res:Response) => res.json()) 
+                // ... do 3 tries
+                .retry(3)
+                //...errors if any
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    // Remove an existing robot
+    removeUser (idUser: string): Observable<User> {
+        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
+        // ...using post request
+        return this.http.get(this.removeUserUrl + "?id_user=" + idUser, options)
+                // ...and calling .json() on the response to return data
+                .map((res:Response) => res.json()) 
+                // ... do 3 tries
+                .retry(3)
+                //...errors if any
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
 
     // Fetch all existing robot
     getRobots() : Observable<Robot[]>{

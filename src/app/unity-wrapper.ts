@@ -3,8 +3,9 @@ import { Unity } from './unity';
 export class UnityWrapper {
 
     constructor(
-    public idRobot: string,
-    public unity: Unity
-  ) {  }
+      public idUser: string,
+      public idRobot: string,
+      public unity: Unity
+    ) {  }
 
 }

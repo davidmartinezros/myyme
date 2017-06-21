@@ -6,6 +6,8 @@ import { Robot } from 'app/robot';
 
 import { Unity } from 'app/unity';
 
+import { User } from 'app/user';
+
 import { UnityRelationWrapper } from 'app/unity-relation-wrapper';
 
 import { RobotService } from 'app/robot.service';
@@ -22,6 +24,8 @@ export class UnityRelationCreationComponent implements OnInit {
   concept: string;
   image: string;
   description: string;
+
+  modelUser: User;
 
   modelRobot: Robot;
 
@@ -58,7 +62,7 @@ export class UnityRelationCreationComponent implements OnInit {
     
     console.log(this.modelUnity);
 
-    let unityRelation = new UnityRelationWrapper(this.modelRobot.id, this.modelUnity.id, new Unity(null, this.concept, this.image, this.description));
+    let unityRelation = new UnityRelationWrapper(this.modelUser.id, this.modelRobot.id, this.modelUnity.id, new Unity(null, this.concept, this.image, this.description));
 
     console.log(unityRelation);
 
