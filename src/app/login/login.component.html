@@ -3,22 +3,24 @@
     <div class="capcalera marginBottom">Login</div>
     <div class="row" *ngIf="!loaded">
         <div class="col-xs-12">
-            <form name="form" (ngSubmit)="entrar()" role="form">
-                <div class="form-group">
-                    <label for="nick">Usuari</label>
-                    <input type="text" name="nick" id="nick" class="form-control" [(ngModel)]="nick" required placeholder="Usuari, correu electrònic o número de telèfon" ng-class="{'has-error': form.nick.$error.required}" />
-                    <span ng-show="form.nick.$dirty && form.nick.$error.required" class="help-block">Usuari: camp requerit</span>
+
+            <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['nick'].valid}">
+                    <label>Usuari:</label>
+                    <input class="form-control" type="text" placeholder="Indica el nick, correu electrònic o telèfon" [formControl]="complexForm.controls['nick']">
+                    <div class="alert alert-danger" *ngIf="!complexForm.controls['nick'].valid">Camp <b>Usuari</b> requerit.</div>
+                </div>
+                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid}">
+                    <label>Contrasenya:</label>
+                    <input class="form-control" type="password" placeholder="La teva contrasenya" [formControl]="complexForm.controls['password']">
+                    <div class="alert alert-danger" *ngIf="!complexForm.controls['password'].valid">Camp <b>Contrasenya</b> requerit, de longitud entre 5 i 10 caràcters, amb un número mínim, amb una lletra minúscula mínim i una lletra majúscula mínim.</div>
                 </div>
                 <div class="form-group">
-                    <label for="password">Contrasenya</label>
-                    <input type="password" name="password" id="password" class="form-control" [(ngModel)]="password" required placeholder="La teva contrasenya" ng-class="{'has-error': form.password.$error.required}" />
-                    <span (ngShow)="form.password.$dirty && form.password.$error.required" class="help-block">Contrasenya: camp requerit</span>
-                </div>
-                <div class="form-actions">
-                    <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Entrar</button>
+                    <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Entrar</button>
                     <a href="#/register" class="btn btn-link">Registrar</a>
                 </div>
             </form>
+
         </div>
     </div>
     <div class="row" *ngIf="loaded">
