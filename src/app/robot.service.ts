@@ -29,15 +29,15 @@ export class RobotService {
     private addTagUrl = this.url + 'createTag';
     private removeTagUrl = this.url + 'removeTag';
     private addUnityRelationUrl = this.url + 'createRelation';
-    //private validateUserUrl = this.url + 'validateUser';
+    private validateUserUrl = this.url + 'validateUser';
     private addUserUrl = this.url + 'createUser';
     private getUserUrl = this.url + 'user';
     private getUserByNickUrl = this.url + 'userByNick';
     private removeUserUrl = this.url + 'removeUser';
 
     constructor(private http: Http) { }
-/*
-    validateUser(body: Object) : Observable<Boolean>{
+
+    validateUser(body: Object) : Observable<User>{
         let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
@@ -51,7 +51,6 @@ export class RobotService {
                 .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
         
     }
-*/
 
     // Fetch all existing robot
     getUserByNick(nick: string) : Observable<Robot>{
@@ -109,9 +108,12 @@ export class RobotService {
     }
 
     // Fetch all existing robot
-    getRobots() : Observable<Robot[]>{
+    getRobots(idUser: string) : Observable<Robot[]>{
+        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+
          // ...using get request
-         return this.http.get(this.listRobotsUrl)
+         return this.http.get(this.listRobotsUrl + "?id_user=" + idUser, options)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
             // ... do 3 tries

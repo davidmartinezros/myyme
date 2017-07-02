@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Robot } from 'app/robot';
+import { User } from 'app/user';
 
 import { RobotService } from 'app/robot.service';
+import { SessionService } from 'app/session.service';
 
 @Component({
   selector: 'app-robot-list',
@@ -13,17 +15,24 @@ import { RobotService } from 'app/robot.service';
 })
 export class RobotListComponent implements OnInit {
 
+  modelUser: User;
+
   modelRobot: Robot;
 
   modelRobots: Robot[];
 
   constructor(private robotService: RobotService,
               private router: Router,
-              private location: Location) { }
+              private location: Location,
+              private sessionService: SessionService) { }
 
   ngOnInit() {
 
-    this.robotService.getRobots().subscribe(res => this.modelRobots = res);
+    this.modelUser = this.sessionService.getUser();
+
+    console.log(this.modelUser);
+
+    this.robotService.getRobots(this.modelUser.id).subscribe(res => this.modelRobots = res);
     
   }
 
@@ -57,7 +66,7 @@ export class RobotListComponent implements OnInit {
         e => console.log('onError: %s', e),
         () => {
               console.log('onCompleted')
-              this.robotService.getRobots().subscribe(res => this.modelRobots = res)
+              this.robotService.getRobots(this.modelUser.id).subscribe(res => this.modelRobots = res)
               });
 
   }

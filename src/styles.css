@@ -14,7 +14,7 @@ body {
 }
 .div {
   padding: 10px;
-  margin: 1px;
+  /*margin: 1px;*/
   border-radius: 4px;
   color: #21618C;
   background-color: #fff;
@@ -136,7 +136,7 @@ mouseCursor:hover {
   cursor: pointer; cursor: hand;
 }
 .marginBottom {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 /* CUBES IN CSS*/
 /*

@@ -1,35 +1,54 @@
 <div class="row div">
-  <div class="col-xs-12">
-    <div class="capcalera marginBottom">Login</div>
-    <div class="row" *ngIf="!loaded">
-        <div class="col-xs-12">
+    <div class="col-xs-12">
+        <div class="capcalera marginBottom">Login</div>
+        <div class="row" *ngIf="!loadedOK">
+            <div class="col-xs-12">
 
-            <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
-                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['nick'].valid}">
-                    <label>Usuari:</label>
-                    <input class="form-control" type="text" placeholder="Indica el nick, correu electrònic o telèfon" [formControl]="complexForm.controls['nick']">
-                    <div class="alert alert-danger" *ngIf="!complexForm.controls['nick'].valid">Camp <b>Usuari</b> requerit.</div>
-                </div>
-                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid}">
-                    <label>Contrasenya:</label>
-                    <input class="form-control" type="password" placeholder="La teva contrasenya" [formControl]="complexForm.controls['password']">
-                    <div class="alert alert-danger" *ngIf="!complexForm.controls['password'].valid">Camp <b>Contrasenya</b> requerit, de longitud entre 5 i 10 caràcters, amb un número mínim, amb una lletra minúscula mínim i una lletra majúscula mínim.</div>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Entrar</button>
-                    <a href="#/register" class="btn btn-link">Registrar</a>
-                </div>
-            </form>
+                <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['user'].valid}">
+                        <label>Usuari:</label>
+                        <input class="form-control" type="text" placeholder="Indica el nick, correu electrònic o telèfon" [formControl]="complexForm.controls['user']">
+                        <div class="alert alert-danger" *ngIf="!complexForm.controls['user'].valid">Camp <b>Usuari</b> requerit.</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid}">
+                        <label>Contrasenya:</label>
+                        <input class="form-control" type="password" placeholder="La teva contrasenya" [formControl]="complexForm.controls['password']">
+                        <div class="alert alert-danger" *ngIf="!complexForm.controls['password'].valid">Camp <b>Contrasenya</b> requerit, de longitud entre 5 i 10 caràcters, amb un número mínim, amb una lletra minúscula mínim i una lletra majúscula mínim.</div>
+                    </div>
+                    <div *ngIf="complexForm.valid">
+                        <div class="alert alert-info">L'<b>Usuari</b> i la <b>Contrasenya</b> han passat les validacions. <b>Prova d'entrar per disfrutar dels teus robots!</b></div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Entrar</button>
+                        <button type="reset" class="btn btn-info" (click)="netejar()">Netejar</button>
+                        <a href="#/register" class="btn btn-link">Registrar</a>
+                    </div>
+                </form>
 
+                <div *ngIf="modelUser">
+                    <div class="alert alert-warning">{{modelUser.message}}</div>
+                    <div class="alert alert-info">Torna-ho a provar o <a href="#/register">registra</a>'t com usuari.</div>
+                </div>
+
+            </div>
         </div>
+        <div class="row div" *ngIf="loadedOK">
+            <div class="col-xs-8">
+                <div>Nick: <b>{{modelUser.nick}}</b></div>
+                <div>Usuari: <b>{{modelUser.firstName}} {{modelUser.lastName}}</b></div>
+            </div>
+            <div class="col-xs-4">
+                <button type="reset" class="btn btn-info" (click)="logOut()">Desconecta</button>
+            </div>
+            
+        </div>
+
+        <div class="row" *ngIf="loadedOK">
+            <div class="col-xs-12">
+                <app-main></app-main>
+            </div>
+        </div>
+
     </div>
-    <div class="row" *ngIf="loaded">
-        <div class="col-xs-12">
-            <div>{{modelUser.id}}</div>
-            <div>{{modelUser.nick}}</div>
-        </div>
 
-        <div class="col-xs-12">
-            <app-main></app-main>
-        </div>
-    </div>
+</div>

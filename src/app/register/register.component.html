@@ -1,51 +1,65 @@
 <div class="row div">
-  <div class="col-xs-12">
-    <div class="capcalera marginBottom">Registre</div>
+    <div class="col-xs-12">
+        <div class="capcalera marginBottom">Registre</div>
 
-    <div class="row" *ngIf="!loaded">
-        <div class="col-xs-12">
-            <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
-                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['nick'].valid}">
-                    <label>Usuari:</label>
-                    <input class="form-control" type="text" placeholder="Indica el nick, correu electrònic o telèfon" [formControl]="complexForm.controls['nick']">
-                    <div class="alert alert-danger" *ngIf="!complexForm.controls['nick'].valid">Camp <b>Usuari</b> requerit.</div>
+        <div class="row" *ngIf="!loadedOK">
+            <div class="col-xs-12">
+                <form [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['nick'].valid}">
+                        <label>Usuari:</label>
+                        <input class="form-control" type="text" placeholder="Indica el nick, correu electrònic o telèfon" [formControl]="complexForm.controls['nick']">
+                        <div class="alert alert-danger" *ngIf="!complexForm.controls['nick'].valid">Camp <b>Usuari</b> requerit.</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['firstName'].valid}">
+                        <label>Nom:</label>
+                        <input class="form-control" type="text" placeholder="Indica el teu nom" [formControl]="complexForm.controls['firstName']">
+                        <div class="alert alert-danger" *ngIf="!complexForm.controls['firstName'].valid">Camp <b>Nom</b> requerit.</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['lastName'].valid}">
+                        <label>Cognoms:</label>
+                        <input class="form-control" type="text" placeholder="Indica els teus cognoms" [formControl]="complexForm.controls['lastName']">
+                        <div class="alert alert-danger" *ngIf="!complexForm.controls['lastName'].valid">Camp <b>Cognoms</b> requerit.</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['email'].valid}">
+                        <label>Email:</label>
+                        <input class="form-control" type="text" placeholder="Indica el teu email" [formControl]="complexForm.controls['email']">
+                        <div class="alert alert-danger" *ngIf="!complexForm.controls['email'].valid">Camp <b>Email</b> requerit amb un format de correu electrònic vàlid.</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['telephone'].valid}">
+                        <label>Telèfon:</label>
+                        <input class="form-control" type="text" placeholder="Indica el teu telèfon" [formControl]="complexForm.controls['telephone']">
+                        <div class="alert alert-danger" *ngIf="!complexForm.controls['telephone'].valid">Camp <b>Telèfon</b> requerit, que només pot contenir números.</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid}">
+                        <label>Contrasenya:</label>
+                        <input class="form-control" type="password" placeholder="La teva contrasenya" [formControl]="complexForm.controls['password']">
+                        <div class="alert alert-danger" *ngIf="!complexForm.controls['password'].valid">Camp <b>Contrasenya</b> requerit, de longitud entre 5 i 10 caràcters, amb un número mínim, amb una lletra minúscula mínim i una lletra majúscula mínim.</div>
+                    </div>
+                    <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['passwordConfirm'].valid}">
+                        <label>Confirmació de Contrasenya:</label>
+                        <input class="form-control" type="password" placeholder="Confirmació de la teva contrasenya" [formControl]="complexForm.controls['passwordConfirm']" oninput="verifyPassword(complexForm.value)">
+                        <div class="alert alert-danger" *ngIf="!complexForm.controls['passwordConfirm'].valid">Camp <b>Confirmació de Contrasenya</b> requerit, de longitud entre 5 i 10 caràcters, amb un número mínim, amb una lletra minúscula mínim i una lletra majúscula mínim.</div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Crear</button>
+                        <button type="reset" class="btn btn-info" (click)="netejar()">Netejar</button>
+                        <button type="button" (click)="goBack()">Back</button>
+                    </div>
+                </form>
+
+                <div *ngIf="modelUser">
+                    <div class="alert alert-warning">{{modelUser.message}}</div>
+                    <div class="alert alert-alert">Hi ha algun error amb el sistema. Posa't en contacte amb l'administrador.</div>
                 </div>
-                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['firstName'].valid}">
-                    <label>Nom:</label>
-                    <input class="form-control" type="text" placeholder="Indica el teu nom" [formControl]="complexForm.controls['firstName']">
-                    <div class="alert alert-danger" *ngIf="!complexForm.controls['firstName'].valid">Camp <b>Nom</b> requerit.</div>
-                </div>
-                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['lastName'].valid}">
-                    <label>Cognoms:</label>
-                    <input class="form-control" type="text" placeholder="Indica els teus cognoms" [formControl]="complexForm.controls['lastName']">
-                    <div class="alert alert-danger" *ngIf="!complexForm.controls['lastName'].valid">Camp <b>Cognoms</b> requerit.</div>
-                </div>
-                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['email'].valid}">
-                    <label>Email:</label>
-                    <input class="form-control" type="text" placeholder="Indica el teu email" [formControl]="complexForm.controls['email']">
-                    <div class="alert alert-danger" *ngIf="!complexForm.controls['email'].valid">Camp <b>Email</b> requerit.</div>
-                </div>
-                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['telephone'].valid}">
-                    <label>Telèfon:</label>
-                    <input class="form-control" type="text" placeholder="Indica el teu telèfon" [formControl]="complexForm.controls['telephone']">
-                    <div class="alert alert-danger" *ngIf="!complexForm.controls['telephone'].valid">Camp <b>Telèfon</b> requerit.</div>
-                </div>
-                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid}">
-                    <label>Contrasenya:</label>
-                    <input class="form-control" type="password" placeholder="La teva contrasenya" [formControl]="complexForm.controls['password']">
-                    <div class="alert alert-danger" *ngIf="!complexForm.controls['password'].valid">Camp <b>Contrasenya</b> requerit, de longitud entre 5 i 10 caràcters, amb un número mínim, amb una lletra minúscula mínim i una lletra majúscula mínim.</div>
-                </div>
-                <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['passwordConfirm'].valid}">
-                    <label>Confirmació de Contrasenya:</label>
-                    <input class="form-control" type="password" placeholder="Confirmació de la teva contrasenya" [formControl]="complexForm.controls['passwordConfirm']">
-                    <div class="alert alert-danger" *ngIf="!complexForm.controls['passwordConfirm'].valid">Camp <b>Confirmació de Contrasenya</b> requerit, de longitud entre 5 i 10 caràcters, amb un número mínim, amb una lletra minúscula mínim i una lletra majúscula mínim.</div>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary" [disabled]="!complexForm.valid">Crear</button>
-                    <button type="reset" class="btn btn-info">Netejar</button>
-                    <button type="button" (click)="goBack()">Back</button>
-                </div>
-            </form>
+
+            </div>
+        </div>
+
+        <div class="row" *ngIf="loadedOK">
+            <div class="col-xs-12">
+                <div class="alert alert-success">Usuari <b>{{modelUser.nick}}</b> donat d'alta correctament.</div>
+                <div class="alert alert-info">Ara ja pots fer <a href="#/login">login</a></div>
+            </div>
         </div>
     </div>
 </div>

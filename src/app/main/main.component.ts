@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Router } from '@angular/router';
+import { SessionService } from '../session.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-main',
@@ -9,21 +11,29 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private router: Router) {
+  modelUser: User;
+
+  constructor(
+    private router: Router,
+    private sessionService: SessionService
+  ) {
   
   }
 
   ngOnInit(): void {
     console.log('init');
+
+    this.modelUser = this.sessionService.getUser();
+  
   }
 
   goRobotCreation() {
-    let link = ['/robotCreation'];
+    let link = ['/robotCreation', this.modelUser.id];
     this.router.navigate(link);
   }
 
   llistarRobots() {
-    let link = ['/robotList'];
+    let link = ['/robotList', this.modelUser.id];
     this.router.navigate(link);
   }
 

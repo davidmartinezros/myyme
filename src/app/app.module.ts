@@ -8,6 +8,7 @@ import { RobotCreationComponent } from './robot-creation/robot-creation.componen
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MainComponent } from './main/main.component';
 import { RobotService } from './robot.service';
+import { SessionService } from './session.service';
 import { RobotGetComponent } from './robot-get/robot-get.component';
 import { PrintUnitiesComponent } from './print-unities/print-unities.component';
 import { RobotListComponent } from './robot-list/robot-list.component';
@@ -43,7 +44,8 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule
   ],
   providers: [
-    RobotService
+    RobotService,
+    SessionService
   ],
   bootstrap: [AppComponent]
 })
