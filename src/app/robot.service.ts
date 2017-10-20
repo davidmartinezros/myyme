@@ -38,7 +38,11 @@ export class RobotService {
     constructor(private http: Http) { }
 
     validateUser(body: Object) : Observable<User>{
-        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
@@ -79,7 +83,11 @@ export class RobotService {
 
     // Add a new robot
     createUser (body: Object): Observable<User> {
-        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
@@ -94,7 +102,11 @@ export class RobotService {
 
     // Remove an existing robot
     removeUser (idUser: string): Observable<User> {
-        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
@@ -109,7 +121,11 @@ export class RobotService {
 
     // Fetch all existing robot
     getRobots(idUser: string) : Observable<Robot[]>{
-        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
          // ...using get request
@@ -151,7 +167,11 @@ export class RobotService {
 
     // Add a new robot
     createRobot (body: Object): Observable<Robot> {
-        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
@@ -166,7 +186,11 @@ export class RobotService {
 
     // Remove an existing robot
     removeRobot (idRobot: string): Observable<Robot> {
-        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
@@ -181,7 +205,11 @@ export class RobotService {
 
     // Fetch all existing unities
     getUnities(idRobot: string) : Observable<Unity[]>{
-        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
          // ...using get request
@@ -197,7 +225,11 @@ export class RobotService {
 
     // Fetch all existing robot
     getUnityByConcept(idRobot: string, concept: string) : Observable<Unity>{
-        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
          // ...using get request
@@ -213,7 +245,11 @@ export class RobotService {
 
     // Fetch all existing robot
     getUnity(idRobot: string, idUnity: string) : Observable<Unity>{
-        let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
          // ...using get request
@@ -229,7 +265,11 @@ export class RobotService {
 
     // Add a new unity
     createUnity (body: Object): Observable<Unity> {
-        let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
@@ -244,7 +284,11 @@ export class RobotService {
 
     // Remove an existing unity
     removeUnity (idUnity: string): Observable<Unity> {
-        let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
@@ -259,7 +303,11 @@ export class RobotService {
 
     // Add a new unity
     createTag (body: Object): Observable<Tag> {
-        let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
@@ -274,7 +322,11 @@ export class RobotService {
 
     // Remove an existing tag
     removeTag (idTag: string): Observable<Tag> {
-        let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
@@ -289,7 +341,11 @@ export class RobotService {
 
     // Add a new unity
     createRelation (body: Object): Observable<Unity> {
-        let headers = new Headers( { 'Content-Type': 'application/json' } ); // ... Set content type to JSON
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
         // ...using post request
