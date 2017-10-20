@@ -90,6 +90,7 @@ export class LoginComponent implements OnInit {
     console.log("logOut");
 
     this.loadedOK = false;
+    this.modelUser = null;
     this.sessionService.setUser(null);
 
   }

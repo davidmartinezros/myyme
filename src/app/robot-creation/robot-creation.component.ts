@@ -3,9 +3,15 @@ import { Location } from '@angular/common';
 
 import { Robot } from 'app/robot';
 
+import { RobotWrapper } from 'app/robot-wrapper';
+
 import { Unity } from 'app/unity';
 
+import { User } from 'app/user';
+
 import { RobotService } from 'app/robot.service';
+
+import { SessionService } from 'app/session.service';
 
 @Component({
   selector: 'app-robot-creation',
@@ -19,7 +25,7 @@ export class RobotCreationComponent implements OnInit {
   profession: string;
   description: string;
 
-  //modelRobots: Robot[];
+  modelUser: User;
 
   modelRobot: Robot;
 
@@ -27,21 +33,24 @@ export class RobotCreationComponent implements OnInit {
 
   //modelUnity: Unity;
 
-  constructor(private robotService: RobotService,
-    private location: Location) { }
+  constructor(
+    private robotService: RobotService,
+    private location: Location,
+    private sessionService: SessionService) { }
 
   ngOnInit() {
+    this.modelUser = this.sessionService.getUser();
   }
 
   professions = ['Engineer', 'Doctor', 'Fisic', 'Quimic'];
 
   onSubmit() {
-    //this.model = new Robot("David", 38, this.professions[0], "The most intelligent in the World");
-    let robot = new Robot(null, this.name, this.age, this.profession, this.description);
+
+    let robotWrapper = new RobotWrapper(this.modelUser.id, new Robot(null, this.name, this.age, this.profession, this.description));
     
     //console.log(JSON.stringify(this.model));
 
-    this.robotService.createRobot(robot).subscribe(res => this.modelRobot = res);
+    this.robotService.createRobot(robotWrapper).subscribe(res => this.modelRobot = res);
 
     ///this.robotService.getRobots().subscribe(res => this.modelRobots = res);
     
