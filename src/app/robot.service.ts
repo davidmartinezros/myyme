@@ -14,7 +14,7 @@ import { User } from './user';
 export class RobotService {
     
     //private url = 'http://localhost:8080/how-do-you-learn/api/howdyl/';
-    private url = 'http://davidmartinezros.com:8080/how-do-you-learn-2.9.0-SNAPSHOT/api/howdyl/';
+    private url = 'https://davidmartinezros.com:8443/how-do-you-learn-2.9.0-SNAPSHOT/api/howdyl/';
 
     private listUnitiesUrl = this.url + 'listUnities';
     private addUnityUrl = this.url + 'createUnity';
