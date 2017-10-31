@@ -14,6 +14,8 @@ import { TagWrapper } from 'app/tag-wrapper';
 
 import { RobotService } from 'app/robot.service';
 
+import { SessionService } from 'app/session.service';
+
 import { Location } from '@angular/common';
 
 @Component({
@@ -35,13 +37,19 @@ export class TagCreationComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private robotService: RobotService,
-              private location: Location) { }
+              private location: Location,
+              private sessionService: SessionService) { }
 
   ngOnInit() {
+
+    this.modelUser = this.sessionService.getUser();
+
+    console.log(this.modelUser);
+    
     this.route.params.forEach((params: Params) => {
         let idRobot = params['id_robot'];
         console.log(idRobot);
-        this.robotService.getRobot(idRobot)
+        this.robotService.getRobot(this.modelUser.id, idRobot)
           .subscribe(
             x => {
               console.log('onNext: %s', x);
@@ -51,7 +59,7 @@ export class TagCreationComponent implements OnInit {
             () => {
               console.log('onCompleted')
               let idUnity = params['id_unity'];
-              this.robotService.getUnity(this.modelRobot.id, idUnity).subscribe(res => this.modelUnity = res)
+              this.robotService.getUnity(this.modelUser.id, this.modelRobot.id, idUnity).subscribe(res => this.modelUnity = res)
             });
     });
   }

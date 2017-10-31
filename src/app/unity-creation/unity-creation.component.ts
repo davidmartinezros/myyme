@@ -12,6 +12,8 @@ import { UnityWrapper } from 'app/unity-wrapper';
 
 import { RobotService } from 'app/robot.service';
 
+import { SessionService } from 'app/session.service';
+
 import { Location } from '@angular/common';
 
 @Component({
@@ -33,15 +35,22 @@ export class UnityCreationComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private robotService: RobotService,
-              private location: Location) { }
+              private location: Location,
+              private sessionService: SessionService) { }
 
   ngOnInit() {
+
+    this.modelUser = this.sessionService.getUser();
+
+    console.log(this.modelUser);
+    
     this.route.params.forEach((params: Params) => {
         let idRobot = params['id_robot'];
         console.log(idRobot);
-        this.robotService.getRobot(idRobot)
+        this.robotService.getRobot(this.modelUser.id, idRobot)
                 .subscribe(res => this.modelRobot = res);
     });
+
   }
 
   onSubmit() {

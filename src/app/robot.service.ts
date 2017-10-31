@@ -153,15 +153,21 @@ export class RobotService {
     }
 
     // Fetch all existing robot
-    getRobot(idRobot: string) : Observable<Robot>{
+    getRobot(idUser: string, idRobot: string) : Observable<Robot>{
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
          // ...using get request
-         return this.http.get(this.getRobotUrl + "/" + idRobot)
-            // ...and calling .json() on the response to return data
-            .map((res:Response) => res.json())
-            // ... do 3 tries
-            .retry(3)
-            //...errors if any
-            .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+        return this.http.get(this.getRobotUrl + "/" + idUser + "/" + idRobot, options)
+                // ...and calling .json() on the response to return data
+                .map((res:Response) => res.json())
+                // ... do 3 tries
+                .retry(3)
+                //...errors if any
+                .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
         
     }
 
@@ -244,7 +250,7 @@ export class RobotService {
     }
 
     // Fetch all existing robot
-    getUnity(idRobot: string, idUnity: string) : Observable<Unity>{
+    getUnity(idUser: string, idRobot: string, idUnity: string) : Observable<Unity>{
         let headers = new Headers(
         { 
                 'Content-Type': 'application/json',
@@ -253,7 +259,7 @@ export class RobotService {
         let options = new RequestOptions({ headers: headers }); // Create a request option
 
          // ...using get request
-         return this.http.get(this.getUnityUrl + "/" + idRobot + "/" + idUnity, options)
+         return this.http.get(this.getUnityUrl + "/" + idUser + "/" + idRobot + "/" + idUnity, options)
             // ...and calling .json() on the response to return data
             .map((res:Response) => res.json())
             // ... do 3 tries

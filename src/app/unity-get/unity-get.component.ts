@@ -3,9 +3,13 @@ import { Location } from '@angular/common';
 
 import { ActivatedRoute, Params }   from '@angular/router';
 
-import { RobotService } from '../robot.service';
+import { RobotService } from 'app/robot.service';
 
-import { Unity } from '../unity';
+import { SessionService } from 'app/session.service';
+
+import { Unity } from 'app/unity';
+
+import { User } from 'app/user';
 
 @Component({
   selector: 'app-unity-get',
@@ -16,17 +20,25 @@ export class UnityGetComponent implements OnInit {
 
   modelUnity: Unity;
 
+  modelUser: User;
+
   concept: string;
 
-  constructor(private robotService: RobotService,
+    constructor(private robotService: RobotService,
         private route: ActivatedRoute,
-        private location: Location) { }
+        private location: Location,
+        private sessionService: SessionService) { }
 
-  ngOnInit(): void {
+    ngOnInit(): void {
+
+        this.modelUser = this.sessionService.getUser();
+        
+        console.log(this.modelUser);
+        
         this.route.params.forEach((params: Params) => {
             this.concept = params['concept'];
             if(this.concept != '') {
-                this.robotService.getUnity('AAA', this.concept)
+                this.robotService.getUnity(this.modelUser.id, 'AAA', this.concept)
                     .subscribe(res => this.modelUnity = res);
             }
         });
@@ -35,7 +47,7 @@ export class UnityGetComponent implements OnInit {
     searchUnity() {
         console.log(this.concept);
         if(this.concept != '') {
-            this.robotService.getUnity('AAA', this.concept)
+            this.robotService.getUnity(this.modelUser.id, 'AAA', this.concept)
                     .subscribe(res => this.modelUnity = res);
         }
 
