@@ -8,4 +8,6 @@ A Frontend Web done with Angular 4 and Bootstrap 3 where you can create your Rob
 
 In this Web you will create a Robot that learns with the rest service project: 
 
-http://davidmartinezros.com:8080/how-do-you-learn-SB-2.0.0-SNAPSHOT/api/howdyl/state
+http://davidmartinezros.com:8080/how-do-you-learn-3.3.1-SNAPSHOT/health
+
+http://davidmartinezros.com:8080/how-do-you-learn-3.3.1-SNAPSHOT/mappings
