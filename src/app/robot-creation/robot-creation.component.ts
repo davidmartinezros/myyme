@@ -9,7 +9,7 @@ import { Unity } from 'app/unity';
 
 import { User } from 'app/user';
 
-import { RobotService } from 'app/robot.service';
+import { HowDoYouLearnService } from 'app/how-do-you-learn.service';
 
 import { SessionService } from 'app/session.service';
 
@@ -34,7 +34,7 @@ export class RobotCreationComponent implements OnInit {
   //modelUnity: Unity;
 
   constructor(
-    private robotService: RobotService,
+    private robotService: HowDoYouLearnService,
     private location: Location,
     private sessionService: SessionService) { }
 

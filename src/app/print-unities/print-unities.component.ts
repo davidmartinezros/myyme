@@ -8,7 +8,7 @@ import { Robot } from '../robot';
 
 import { Tag } from '../tag';
 
-import { RobotService } from 'app/robot.service';
+import { HowDoYouLearnService } from 'app/how-do-you-learn.service';
 
 @Component({
   selector: 'app-print-unities',
@@ -28,7 +28,7 @@ export class PrintUnitiesComponent implements OnInit {
   modelTag: Tag;
   
   constructor(private router: Router,
-    private robotService: RobotService) { }
+    private robotService: HowDoYouLearnService) { }
 
   ngOnInit() {
     console.log(this.modelUnity);

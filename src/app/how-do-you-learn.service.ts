@@ -11,7 +11,7 @@ import { Tag } from './tag';
 import { User } from './user';
 
 @Injectable()
-export class RobotService {
+export class HowDoYouLearnService {
     
     //private url = 'http://localhost:8080/how-do-you-learn/api/howdyl/';
     private url = 'https://davidmartinezros.com:8443/how-do-you-learn-3.3.1-SNAPSHOT/api/howdyl/';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
-import { RobotService } from '../robot.service';
+import { HowDoYouLearnService } from '../how-do-you-learn.service';
 
 import { SessionService } from '../session.service';
 
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   loadedOK: boolean;
 
   constructor(private location: Location,
-              private robotService: RobotService,
+              private robotService: HowDoYouLearnService,
               private fb: FormBuilder,
               private sessionService: SessionService) {
 

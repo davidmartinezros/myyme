@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { RobotService } from '../robot.service';
+import { HowDoYouLearnService } from '../how-do-you-learn.service';
 
 import { SessionService } from '../session.service';
 
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   modelUser: User;
 
-  constructor(private robotService: RobotService,
+  constructor(private robotService: HowDoYouLearnService,
               private fb: FormBuilder,
               private sessionService: SessionService) {
 
