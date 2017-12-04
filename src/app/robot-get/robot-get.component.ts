@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location } from '@angular/common';
 
-import { RobotService } from '../robot.service';
+import { HowDoYouLearnService } from '../how-do-you-learn.service';
 
 import { Robot } from '../robot';
 
@@ -17,7 +17,7 @@ export class RobotGetComponent implements OnInit {
 
     nameRobot: string;
 
-    constructor(private robotService: RobotService,
+    constructor(private robotService: HowDoYouLearnService,
         private route: ActivatedRoute,
         private location: Location) { }
 

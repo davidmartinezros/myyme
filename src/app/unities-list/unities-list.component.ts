@@ -5,7 +5,7 @@ import { ActivatedRoute, Params }   from '@angular/router';
   
 import { Unity } from 'app/unity';
 
-import { RobotService } from 'app/robot.service';
+import { HowDoYouLearnService } from 'app/how-do-you-learn.service';
 
 @Component({
   selector: 'app-unities-list',
@@ -21,7 +21,7 @@ export class UnitiesListComponent implements OnInit {
   modelUnity: Unity;
 
   constructor(private route: ActivatedRoute,
-              private robotService: RobotService,
+              private robotService: HowDoYouLearnService,
               private location: Location) { }
 
   ngOnInit() {

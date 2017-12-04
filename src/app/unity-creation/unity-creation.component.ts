@@ -10,7 +10,7 @@ import { User } from 'app/user';
 
 import { UnityWrapper } from 'app/unity-wrapper';
 
-import { RobotService } from 'app/robot.service';
+import { HowDoYouLearnService } from 'app/how-do-you-learn.service';
 
 import { SessionService } from 'app/session.service';
 
@@ -34,7 +34,7 @@ export class UnityCreationComponent implements OnInit {
   modelUnity: Unity;
 
   constructor(private route: ActivatedRoute,
-              private robotService: RobotService,
+              private robotService: HowDoYouLearnService,
               private location: Location,
               private sessionService: SessionService) { }
 

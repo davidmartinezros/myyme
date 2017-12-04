@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 
 import { ActivatedRoute, Params }   from '@angular/router';
 
-import { RobotService } from 'app/robot.service';
+import { HowDoYouLearnService } from 'app/how-do-you-learn.service';
 
 import { SessionService } from 'app/session.service';
 
@@ -24,7 +24,7 @@ export class UnityGetComponent implements OnInit {
 
   concept: string;
 
-    constructor(private robotService: RobotService,
+    constructor(private robotService: HowDoYouLearnService,
         private route: ActivatedRoute,
         private location: Location,
         private sessionService: SessionService) { }

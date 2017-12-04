@@ -7,7 +7,10 @@ import { AppComponent } from './app.component';
 import { RobotCreationComponent } from './robot-creation/robot-creation.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MainComponent } from './main/main.component';
-import { RobotService } from './robot.service';
+import { HowDoYouLearnService } from './how-do-you-learn.service';
+import { FileGeneratorService } from './file-generator.service';
+import { DeeplearningMachineService } from './deeplearning-machine.service';
+import { CallingToInternetService } from './calling-to-internet.service';
 import { SessionService } from './session.service';
 import { RobotGetComponent } from './robot-get/robot-get.component';
 import { PrintUnitiesComponent } from './print-unities/print-unities.component';
@@ -44,7 +47,10 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule
   ],
   providers: [
-    RobotService,
+    HowDoYouLearnService,
+    FileGeneratorService,
+    DeeplearningMachineService,
+    CallingToInternetService,
     SessionService
   ],
   bootstrap: [AppComponent]

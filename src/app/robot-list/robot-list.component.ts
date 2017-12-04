@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { Robot } from 'app/robot';
 import { User } from 'app/user';
 
-import { RobotService } from 'app/robot.service';
+import { HowDoYouLearnService } from 'app/how-do-you-learn.service';
 import { SessionService } from 'app/session.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class RobotListComponent implements OnInit {
 
   modelRobots: Robot[];
 
-  constructor(private robotService: RobotService,
+  constructor(private robotService: HowDoYouLearnService,
               private router: Router,
               private location: Location,
               private sessionService: SessionService) { }

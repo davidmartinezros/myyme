@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 
-import { RobotService} from './robot.service';
+import { HowDoYouLearnService } from './how-do-you-learn.service';
 
 import { Robot } from './robot';
 
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   modelRobot: Robot;
 
-  constructor(private robotService: RobotService) {
+  constructor(private robotService: HowDoYouLearnService) {
     // Hem de carregar el robot que seleccioni lusuari
     this.robotService.getRobotByName("David")
                     .subscribe(res => this.modelRobot = res);
