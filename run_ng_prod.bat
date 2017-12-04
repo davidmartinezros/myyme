@@ -1,1 +1,1 @@
-ng build --prod --env=prod
+ng build --base-href https://davidmartinezros.com/Angular2/myyme/ --prod --env=prod
