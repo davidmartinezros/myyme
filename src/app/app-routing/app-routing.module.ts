@@ -11,6 +11,9 @@ import { UnityCreationComponent } from '../unity-creation/unity-creation.compone
 import { UnityGetComponent } from '../unity-get/unity-get.component';
 import { TagCreationComponent } from '../tag-creation/tag-creation.component';
 import { UnityRelationCreationComponent } from '../unity-relation-creation/unity-relation-creation.component';
+import { LearnThemeComponent } from '../learn-theme/learn-theme.component';
+import { ExecuteLmComponent } from '../execute-lm/execute-lm.component';
+import { TrainLmComponent } from '../train-lm/train-lm.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,7 +27,10 @@ const routes: Routes = [
   { path: 'unityGet/:id_robot/:concept', component: UnityGetComponent },
   { path: 'unitiesList/:id_robot', component: UnitiesListComponent },
   { path: 'tagCreation/:id_robot/:id_unity', component: TagCreationComponent },
-  { path: 'unityRelationCreation/:id_robot/:id_unity', component: UnityRelationCreationComponent }
+  { path: 'unityRelationCreation/:id_robot/:id_unity', component: UnityRelationCreationComponent },
+  { path: 'learnTheme/:id_user', component: LearnThemeComponent },
+  { path: 'executeLM/:id_user', component: ExecuteLmComponent },
+  { path: 'trainLM/:id_user', component: TrainLmComponent }
 ];
 
 @NgModule({

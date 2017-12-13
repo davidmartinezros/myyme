@@ -37,6 +37,21 @@ export class MainComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  learnTheme() {
+    let link = ['/learnTheme', this.modelUser.id];
+    this.router.navigate(link);
+  }
+  
+  executeLM() {
+    let link = ['/executeLM', this.modelUser.id];
+    this.router.navigate(link);
+  }
+
+  trainLM() {
+    let link = ['/trainLM', this.modelUser.id];
+    this.router.navigate(link);
+  }
+
   getRobot() {
     let link = ['/robotGet',''];
     this.router.navigate(link);

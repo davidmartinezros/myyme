@@ -13,11 +13,18 @@ export class FileGeneratorService {
     constructor(private http: Http) { }
 
     // construct phrase
-    constructPhrase(theme: string, phrase: string) : Observable<String>{
-          // ...using get request
-          return this.http.get(this.constructPhraseUrl + "?theme=" + theme + "&phrase=" + phrase)
+    constructPhrase(theme: String, phrase: String) : Observable<String>{
+        let headers = new Headers(
+        { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+        }); // ... Set content type to JSON
+        let options = new RequestOptions({ headers: headers }); // Create a request option
+        // ...using get request
+        console.log(this.constructPhraseUrl + "?theme=" + theme + "&phrase=" + phrase);
+        return this.http.get(this.constructPhraseUrl + "?theme=" + theme + "&phrase=" + phrase, options)
             // ...and calling .json() on the response to return data
-            .map((res:Response) => res.json())
+            .map((res:Response) => res.text())
             // ... do 3 tries
             .retry(3)
             //...errors if any

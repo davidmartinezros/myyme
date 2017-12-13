@@ -14,24 +14,36 @@ export class DeeplearningMachineService {
   constructor(private http: Http) { }
 
   // train LM
-  trainLM(theme: string, word: string) : Observable<String[]>{
-        // ...using get request
-        return this.http.get(this.trainLMUrl + "?theme=" + theme + "&word=" + word)
-          // ...and calling .json() on the response to return data
-          .map((res:Response) => res.json())
-          // ... do 3 tries
-          .retry(3)
-          //...errors if any
-          .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  trainLM(theme: String, word: String) : Observable<String[]>{
+    let headers = new Headers(
+    { 
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+    }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    // ...using get request
+    return this.http.get(this.trainLMUrl + "?theme=" + theme + "&word=" + word, options)
+      // ...and calling .json() on the response to return data
+      .map((res:Response) => res.text())
+      // ... do 3 tries
+      .retry(3)
+      //...errors if any
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
       
   }
 
   // execute LM
-  executeLM(theme: string, word: string) : Observable<String[]>{
+  executeLM(theme: String, word: String) : Observable<String[]>{
+    let headers = new Headers(
+    { 
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+    }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
     // ...using get request
-    return this.http.get(this.executeLMUrl + "?theme=" + theme + "&word=" + word)
+    return this.http.get(this.executeLMUrl + "?theme=" + theme + "&word=" + word, options)
       // ...and calling .json() on the response to return data
-      .map((res:Response) => res.json())
+      .map((res:Response) => res.text())
       // ... do 3 tries
       .retry(3)
       //...errors if any

@@ -22,6 +22,9 @@ import { TagCreationComponent } from './tag-creation/tag-creation.component';
 import { UnityRelationCreationComponent } from './unity-relation-creation/unity-relation-creation.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LearnThemeComponent } from './learn-theme/learn-theme.component';
+import { ExecuteLmComponent } from './execute-lm/execute-lm.component';
+import { TrainLmComponent } from './train-lm/train-lm.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { RegisterComponent } from './register/register.component';
     TagCreationComponent,
     UnityRelationCreationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LearnThemeComponent,
+    ExecuteLmComponent,
+    TrainLmComponent
   ],
   imports: [
     BrowserModule,
